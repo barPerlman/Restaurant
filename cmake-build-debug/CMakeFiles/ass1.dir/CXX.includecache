@@ -39,6 +39,8 @@ Action.h
 /home/barper/CLionProjects/ass1/Action.h
 
 /home/barper/CLionProjects/ass1/RestaurantClasses.cpp
+Restaurant.h
+/home/barper/CLionProjects/ass1/Restaurant.h
 Table.h
 /home/barper/CLionProjects/ass1/Table.h
 Restaurant.h
@@ -47,6 +49,8 @@ iostream
 -
 Dish.h
 /home/barper/CLionProjects/ass1/Dish.h
+Customer.h
+/home/barper/CLionProjects/ass1/Customer.h
 string
 -
 
@@ -57,10 +61,4 @@ Customer.h
 /home/barper/CLionProjects/ass1/Customer.h
 Dish.h
 /home/barper/CLionProjects/ass1/Dish.h
-
-/home/barper/CLionProjects/ass1/main.cpp
-Restaurant.h
-/home/barper/CLionProjects/ass1/Restaurant.h
-iostream
--
 

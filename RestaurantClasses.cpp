@@ -1,3 +1,4 @@
+#include "Restaurant.h"
 #include "Table.h"//
 // Created by barper on 11/3/18.
 // The following classes are implemented in this file:
@@ -6,6 +7,7 @@
 #include "Restaurant.h"
 #include <iostream>
 #include "Dish.h"
+#include "Customer.h"
 #include <string>
 using namespace std;
 /////////////////////////Dish Class functions/////////////////////////////////////
@@ -35,10 +37,22 @@ std::string Dish::getName()const {
 //Dish print in the required format
 string Dish::toString() const {
     //convert to string in aim to return concat string
-    string typeStr=to_string(type);
+    string typeStr;
+    switch(type){
+        case VEG:
+            typeStr="VEG";
+        case SPC:
+            typeStr="SPC";
+        case BVG:
+            typeStr="BVG";
+        case ALC:
+            typeStr="ALC";
+
+    }
     string priceStr=to_string(price);
     string dishString=name+" "+typeStr+" "+priceStr+"NIS";
     return dishString;
+
 }
 
 /////////////////////////Table Class functions/////////////////////////////////////
@@ -55,7 +69,7 @@ void Table::addCustomer(Customer* customer){
     if(customersList.size()<capacity&&!open){
         customersList.push_back(customer);//add customer to table at end of list
     } else{
-        std::cout<<"Cannot add a Customer to the table its open or full!"<<std::endl;
+        std::cout<<"Cannot add a Customer to the table. it's open or full!"<<std::endl;
     }
 
 }
@@ -63,50 +77,65 @@ void Table::addCustomer(Customer* customer){
 //remove customer with 'id' from customers list
 //remove orders of customer with 'id' from orders list
 void Table::removeCustomer(int id){
-    i=0;
+    int    i=0;
     bool found=false;   //a flag tells if the customer removed
     while(i<customersList.size()&&!found){
         Customer *&currCustomer=customersList.at(i);
         if(currCustomer->getId()==id){   //found such customer
             customersList.erase(customersList.begin()+i);
-            found=true;
+           found=true;
         }
         i++;
     }
     //if a customer is removed, remove his orders out of the table
     if(found){
-        j=0;
-        while(j<orderList.size()){
-            if((orderList.at(j)).first==id){
-                orderList.erase(orderList.begin()+j);   //remove order
-                j=0;//get the index to the start of the vector after vector rearranging
+        vector<OrderPair> orderListCopy(orderList);  //deep copy orders to temp list orders
+        orderList.clear();
+        for(int i=0;i<orderListCopy.size();i++){    //get back to origin vetor the orders without orders attributed to the 'id'
+            if(orderListCopy.at(i).first!=id){
+                orderList.push_back(orderListCopy.at(i));
             }
-            j++;
         }
 
     }
 }
+
 //return a customer with matching id from the list
 Customer* Table::getCustomer(int id){
     for(int i=0;i<customersList.size();i++){
-        Customer *&currCustomer=customersList.at(i);
+        Customer*& currCustomer=customersList.at(i);
         if(currCustomer->getId()==id){   //found such customer
             return currCustomer;
         }
     }
     return nullptr;
 }
-//getter for the customers list
-std::vector<Customer*>& Table::getCustomers(){
-    return customersList;
+///////////למחוק את כל אלה.. לבדיקה בלבד ומניעת שגיאות קומפילציה!!!!////
+int Customer::getId() const{
+    return 1;
 }
-//getter for the orders list
+
+
+
+///////////////////////////////////////////////////
+
+
+//return a ref. for the customers list
+std::vector<Customer*>& Table::getCustomers(){
+    vector<Customer*>& customersRef=customersList;
+    return customersRef;
+}
+//return a ref. for the orders list
 std::vector<OrderPair>& Table::getOrders(){
-    return orderList;
+    vector<OrderPair>& orderRef=orderList;
+    return orderRef;
 }
 ///////////define after understanding what is it????
 void Table::order(const std::vector<Dish> &menu){
-
+    std::cout<<"Orders:"<<std::endl;
+    for(int i=0;i<menu.size();i++){
+        std::cout<<menu.at(i).toString()<<std::endl;
+    }
 }
 //open table by change its status
 void Table::openTable(){
@@ -130,11 +159,36 @@ bool Table::isOpen(){
 }
 
 /////////////////////////Restaurant Class functions/////////////////////////////////////
+//default empty constructor
+Restaurant::Restaurant(){}
+
 
 Restaurant::Restaurant(const std::string &configFilePath) {
     std::cout<<"got config file"<<std::endl;
 }
 
 void Restaurant::start() {
-    std::cout<<"start"<<std::endl;
+    std::cout<<"Restaurant is now open!"<<std::endl;
+}
+//get the amount of tables in restaurant
+int Restaurant::getNumOfTables() const{
+    return tables.size();
+}
+//return the table in the required index or nullptr if doesn't exist
+Table* Restaurant::getTable(int ind){
+    if(ind<getNumOfTables()) {
+        Table *&requiredTable = tables.at(ind);
+        return requiredTable;
+    }
+    return nullptr;
+}
+// Return a reference to the history of actions
+const std::vector<BaseAction*>& Restaurant::getActionsLog() const{
+    const vector<BaseAction*>& log=actionsLog; //define a const copy of actions log with read only permission
+    return log;
+}
+//return a ref. to the menu
+std::vector<Dish>& Restaurant::getMenu(){
+    vector<Dish>& menuCopy=menu;
+    return menuCopy;
 }
