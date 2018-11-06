@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/barper/CLionProjects/ass1/Customer.cpp" "/home/barper/CLionProjects/ass1/cmake-build-debug/CMakeFiles/ass1.dir/Customer.cpp.o"
   "/home/barper/CLionProjects/ass1/RestaurantClasses.cpp" "/home/barper/CLionProjects/ass1/cmake-build-debug/CMakeFiles/ass1.dir/RestaurantClasses.cpp.o"
   "/home/barper/CLionProjects/ass1/main.cpp" "/home/barper/CLionProjects/ass1/cmake-build-debug/CMakeFiles/ass1.dir/main.cpp.o"
   )

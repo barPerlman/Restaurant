@@ -12,6 +12,9 @@ public:
     virtual std::string toString() const = 0;
     std::string getName() const;
     int getId() const;
+    std::string castDishType(DishType dishType);
+    bool checkMenu(const std::vector<Dish> &menu,std::string str);
+    virtual ~Customer(); // Destructor
 private:
     const std::string name;
     const int id;

@@ -114,14 +114,6 @@ Customer* Table::getCustomer(int id){
     }
     return nullptr;
 }
-///////////למחוק את כל אלה.. לבדיקה בלבד ומניעת שגיאות קומפילציה!!!!////
-int Customer::getId() const{
-    return 1;
-}
-
-
-
-///////////////////////////////////////////////////
 
 
 //return a ref. for the customers list

@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/ass1.dir/main.cpp.o"
   "CMakeFiles/ass1.dir/RestaurantClasses.cpp.o"
+  "CMakeFiles/ass1.dir/Customer.cpp.o"
   "ass1.pdb"
   "ass1"
 )

@@ -53,6 +53,8 @@ Customer.h
 /home/barper/CLionProjects/ass1/Customer.h
 string
 -
+fstream
+-
 
 /home/barper/CLionProjects/ass1/Table.h
 vector

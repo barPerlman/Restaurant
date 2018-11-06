@@ -123,6 +123,33 @@ ass1/fast:
 	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/build
 .PHONY : ass1/fast
 
+Customer.o: Customer.cpp.o
+
+.PHONY : Customer.o
+
+# target to build an object file
+Customer.cpp.o:
+	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/Customer.cpp.o
+.PHONY : Customer.cpp.o
+
+Customer.i: Customer.cpp.i
+
+.PHONY : Customer.i
+
+# target to preprocess a source file
+Customer.cpp.i:
+	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/Customer.cpp.i
+.PHONY : Customer.cpp.i
+
+Customer.s: Customer.cpp.s
+
+.PHONY : Customer.s
+
+# target to generate assembly for a file
+Customer.cpp.s:
+	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/Customer.cpp.s
+.PHONY : Customer.cpp.s
+
 RestaurantClasses.o: RestaurantClasses.cpp.o
 
 .PHONY : RestaurantClasses.o
@@ -186,6 +213,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... ass1"
+	@echo "... Customer.o"
+	@echo "... Customer.i"
+	@echo "... Customer.s"
 	@echo "... RestaurantClasses.o"
 	@echo "... RestaurantClasses.i"
 	@echo "... RestaurantClasses.s"
