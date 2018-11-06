@@ -150,32 +150,86 @@ Customer.cpp.s:
 	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/Customer.cpp.s
 .PHONY : Customer.cpp.s
 
-RestaurantClasses.o: RestaurantClasses.cpp.o
+Dish.o: Dish.cpp.o
 
-.PHONY : RestaurantClasses.o
+.PHONY : Dish.o
 
 # target to build an object file
-RestaurantClasses.cpp.o:
-	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/RestaurantClasses.cpp.o
-.PHONY : RestaurantClasses.cpp.o
+Dish.cpp.o:
+	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/Dish.cpp.o
+.PHONY : Dish.cpp.o
 
-RestaurantClasses.i: RestaurantClasses.cpp.i
+Dish.i: Dish.cpp.i
 
-.PHONY : RestaurantClasses.i
+.PHONY : Dish.i
 
 # target to preprocess a source file
-RestaurantClasses.cpp.i:
-	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/RestaurantClasses.cpp.i
-.PHONY : RestaurantClasses.cpp.i
+Dish.cpp.i:
+	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/Dish.cpp.i
+.PHONY : Dish.cpp.i
 
-RestaurantClasses.s: RestaurantClasses.cpp.s
+Dish.s: Dish.cpp.s
 
-.PHONY : RestaurantClasses.s
+.PHONY : Dish.s
 
 # target to generate assembly for a file
-RestaurantClasses.cpp.s:
-	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/RestaurantClasses.cpp.s
-.PHONY : RestaurantClasses.cpp.s
+Dish.cpp.s:
+	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/Dish.cpp.s
+.PHONY : Dish.cpp.s
+
+Restaurant.o: Restaurant.cpp.o
+
+.PHONY : Restaurant.o
+
+# target to build an object file
+Restaurant.cpp.o:
+	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/Restaurant.cpp.o
+.PHONY : Restaurant.cpp.o
+
+Restaurant.i: Restaurant.cpp.i
+
+.PHONY : Restaurant.i
+
+# target to preprocess a source file
+Restaurant.cpp.i:
+	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/Restaurant.cpp.i
+.PHONY : Restaurant.cpp.i
+
+Restaurant.s: Restaurant.cpp.s
+
+.PHONY : Restaurant.s
+
+# target to generate assembly for a file
+Restaurant.cpp.s:
+	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/Restaurant.cpp.s
+.PHONY : Restaurant.cpp.s
+
+Table.o: Table.cpp.o
+
+.PHONY : Table.o
+
+# target to build an object file
+Table.cpp.o:
+	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/Table.cpp.o
+.PHONY : Table.cpp.o
+
+Table.i: Table.cpp.i
+
+.PHONY : Table.i
+
+# target to preprocess a source file
+Table.cpp.i:
+	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/Table.cpp.i
+.PHONY : Table.cpp.i
+
+Table.s: Table.cpp.s
+
+.PHONY : Table.s
+
+# target to generate assembly for a file
+Table.cpp.s:
+	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/Table.cpp.s
+.PHONY : Table.cpp.s
 
 main.o: main.cpp.o
 
@@ -216,9 +270,15 @@ help:
 	@echo "... Customer.o"
 	@echo "... Customer.i"
 	@echo "... Customer.s"
-	@echo "... RestaurantClasses.o"
-	@echo "... RestaurantClasses.i"
-	@echo "... RestaurantClasses.s"
+	@echo "... Dish.o"
+	@echo "... Dish.i"
+	@echo "... Dish.s"
+	@echo "... Restaurant.o"
+	@echo "... Restaurant.i"
+	@echo "... Restaurant.s"
+	@echo "... Table.o"
+	@echo "... Table.i"
+	@echo "... Table.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

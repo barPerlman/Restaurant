@@ -5,12 +5,26 @@ CMakeFiles/ass1.dir/Customer.cpp.o: ../Customer.cpp
 CMakeFiles/ass1.dir/Customer.cpp.o: ../Customer.h
 CMakeFiles/ass1.dir/Customer.cpp.o: ../Dish.h
 
-CMakeFiles/ass1.dir/RestaurantClasses.cpp.o: ../Action.h
-CMakeFiles/ass1.dir/RestaurantClasses.cpp.o: ../Customer.h
-CMakeFiles/ass1.dir/RestaurantClasses.cpp.o: ../Dish.h
-CMakeFiles/ass1.dir/RestaurantClasses.cpp.o: ../Restaurant.h
-CMakeFiles/ass1.dir/RestaurantClasses.cpp.o: ../RestaurantClasses.cpp
-CMakeFiles/ass1.dir/RestaurantClasses.cpp.o: ../Table.h
+CMakeFiles/ass1.dir/Dish.cpp.o: ../Action.h
+CMakeFiles/ass1.dir/Dish.cpp.o: ../Customer.h
+CMakeFiles/ass1.dir/Dish.cpp.o: ../Dish.cpp
+CMakeFiles/ass1.dir/Dish.cpp.o: ../Dish.h
+CMakeFiles/ass1.dir/Dish.cpp.o: ../Restaurant.h
+CMakeFiles/ass1.dir/Dish.cpp.o: ../Table.h
+
+CMakeFiles/ass1.dir/Restaurant.cpp.o: ../Action.h
+CMakeFiles/ass1.dir/Restaurant.cpp.o: ../Customer.h
+CMakeFiles/ass1.dir/Restaurant.cpp.o: ../Dish.h
+CMakeFiles/ass1.dir/Restaurant.cpp.o: ../Restaurant.cpp
+CMakeFiles/ass1.dir/Restaurant.cpp.o: ../Restaurant.h
+CMakeFiles/ass1.dir/Restaurant.cpp.o: ../Table.h
+
+CMakeFiles/ass1.dir/Table.cpp.o: ../Action.h
+CMakeFiles/ass1.dir/Table.cpp.o: ../Customer.h
+CMakeFiles/ass1.dir/Table.cpp.o: ../Dish.h
+CMakeFiles/ass1.dir/Table.cpp.o: ../Restaurant.h
+CMakeFiles/ass1.dir/Table.cpp.o: ../Table.cpp
+CMakeFiles/ass1.dir/Table.cpp.o: ../Table.h
 
 CMakeFiles/ass1.dir/main.cpp.o: ../Action.h
 CMakeFiles/ass1.dir/main.cpp.o: ../Customer.h

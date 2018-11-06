@@ -90,7 +90,22 @@
 		<Unit filename="/home/barper/CLionProjects/ass1/Customer.h">
 			<Option target="ass1"/>
 		</Unit>
-		<Unit filename="/home/barper/CLionProjects/ass1/RestaurantClasses.cpp">
+		<Unit filename="/home/barper/CLionProjects/ass1/Dish.cpp">
+			<Option target="ass1"/>
+		</Unit>
+		<Unit filename="/home/barper/CLionProjects/ass1/Dish.h">
+			<Option target="ass1"/>
+		</Unit>
+		<Unit filename="/home/barper/CLionProjects/ass1/Restaurant.cpp">
+			<Option target="ass1"/>
+		</Unit>
+		<Unit filename="/home/barper/CLionProjects/ass1/Restaurant.h">
+			<Option target="ass1"/>
+		</Unit>
+		<Unit filename="/home/barper/CLionProjects/ass1/Table.cpp">
+			<Option target="ass1"/>
+		</Unit>
+		<Unit filename="/home/barper/CLionProjects/ass1/Table.h">
 			<Option target="ass1"/>
 		</Unit>
 		<Unit filename="/home/barper/CLionProjects/ass1/main.cpp">

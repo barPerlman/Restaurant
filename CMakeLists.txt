@@ -3,4 +3,4 @@ project(ass1)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(ass1 main.cpp RestaurantClasses.cpp Customer.cpp)
+add_executable(ass1 main.cpp Customer.cpp Table.cpp Dish.cpp Restaurant.cpp)

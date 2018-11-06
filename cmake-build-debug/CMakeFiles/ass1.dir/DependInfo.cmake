@@ -5,7 +5,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/barper/CLionProjects/ass1/Customer.cpp" "/home/barper/CLionProjects/ass1/cmake-build-debug/CMakeFiles/ass1.dir/Customer.cpp.o"
-  "/home/barper/CLionProjects/ass1/RestaurantClasses.cpp" "/home/barper/CLionProjects/ass1/cmake-build-debug/CMakeFiles/ass1.dir/RestaurantClasses.cpp.o"
+  "/home/barper/CLionProjects/ass1/Dish.cpp" "/home/barper/CLionProjects/ass1/cmake-build-debug/CMakeFiles/ass1.dir/Dish.cpp.o"
+  "/home/barper/CLionProjects/ass1/Restaurant.cpp" "/home/barper/CLionProjects/ass1/cmake-build-debug/CMakeFiles/ass1.dir/Restaurant.cpp.o"
+  "/home/barper/CLionProjects/ass1/Table.cpp" "/home/barper/CLionProjects/ass1/cmake-build-debug/CMakeFiles/ass1.dir/Table.cpp.o"
   "/home/barper/CLionProjects/ass1/main.cpp" "/home/barper/CLionProjects/ass1/cmake-build-debug/CMakeFiles/ass1.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

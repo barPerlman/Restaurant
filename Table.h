@@ -9,6 +9,7 @@ typedef std::pair<int, Dish> OrderPair;
 
 class Table{
 public:
+    virtual ~Table(); //destructor
     Table(int t_capacity);
     int getCapacity() const;
     void addCustomer(Customer* customer);
@@ -23,6 +24,7 @@ public:
     bool isOpen();
     void removeCurrCustomerOrders(const int &id);
 private:
+    void clear();
     int capacity;
     bool open;
     std::vector<Customer*> customersList;

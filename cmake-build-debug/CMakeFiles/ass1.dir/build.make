@@ -70,22 +70,9 @@ CMakeFiles/ass1.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ass1.dir/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/barper/CLionProjects/ass1/main.cpp -o CMakeFiles/ass1.dir/main.cpp.s
 
-CMakeFiles/ass1.dir/RestaurantClasses.cpp.o: CMakeFiles/ass1.dir/flags.make
-CMakeFiles/ass1.dir/RestaurantClasses.cpp.o: ../RestaurantClasses.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/barper/CLionProjects/ass1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ass1.dir/RestaurantClasses.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ass1.dir/RestaurantClasses.cpp.o -c /home/barper/CLionProjects/ass1/RestaurantClasses.cpp
-
-CMakeFiles/ass1.dir/RestaurantClasses.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ass1.dir/RestaurantClasses.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/barper/CLionProjects/ass1/RestaurantClasses.cpp > CMakeFiles/ass1.dir/RestaurantClasses.cpp.i
-
-CMakeFiles/ass1.dir/RestaurantClasses.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ass1.dir/RestaurantClasses.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/barper/CLionProjects/ass1/RestaurantClasses.cpp -o CMakeFiles/ass1.dir/RestaurantClasses.cpp.s
-
 CMakeFiles/ass1.dir/Customer.cpp.o: CMakeFiles/ass1.dir/flags.make
 CMakeFiles/ass1.dir/Customer.cpp.o: ../Customer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/barper/CLionProjects/ass1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ass1.dir/Customer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/barper/CLionProjects/ass1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ass1.dir/Customer.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ass1.dir/Customer.cpp.o -c /home/barper/CLionProjects/ass1/Customer.cpp
 
 CMakeFiles/ass1.dir/Customer.cpp.i: cmake_force
@@ -96,21 +83,64 @@ CMakeFiles/ass1.dir/Customer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ass1.dir/Customer.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/barper/CLionProjects/ass1/Customer.cpp -o CMakeFiles/ass1.dir/Customer.cpp.s
 
+CMakeFiles/ass1.dir/Table.cpp.o: CMakeFiles/ass1.dir/flags.make
+CMakeFiles/ass1.dir/Table.cpp.o: ../Table.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/barper/CLionProjects/ass1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ass1.dir/Table.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ass1.dir/Table.cpp.o -c /home/barper/CLionProjects/ass1/Table.cpp
+
+CMakeFiles/ass1.dir/Table.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ass1.dir/Table.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/barper/CLionProjects/ass1/Table.cpp > CMakeFiles/ass1.dir/Table.cpp.i
+
+CMakeFiles/ass1.dir/Table.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ass1.dir/Table.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/barper/CLionProjects/ass1/Table.cpp -o CMakeFiles/ass1.dir/Table.cpp.s
+
+CMakeFiles/ass1.dir/Dish.cpp.o: CMakeFiles/ass1.dir/flags.make
+CMakeFiles/ass1.dir/Dish.cpp.o: ../Dish.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/barper/CLionProjects/ass1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ass1.dir/Dish.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ass1.dir/Dish.cpp.o -c /home/barper/CLionProjects/ass1/Dish.cpp
+
+CMakeFiles/ass1.dir/Dish.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ass1.dir/Dish.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/barper/CLionProjects/ass1/Dish.cpp > CMakeFiles/ass1.dir/Dish.cpp.i
+
+CMakeFiles/ass1.dir/Dish.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ass1.dir/Dish.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/barper/CLionProjects/ass1/Dish.cpp -o CMakeFiles/ass1.dir/Dish.cpp.s
+
+CMakeFiles/ass1.dir/Restaurant.cpp.o: CMakeFiles/ass1.dir/flags.make
+CMakeFiles/ass1.dir/Restaurant.cpp.o: ../Restaurant.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/barper/CLionProjects/ass1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ass1.dir/Restaurant.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ass1.dir/Restaurant.cpp.o -c /home/barper/CLionProjects/ass1/Restaurant.cpp
+
+CMakeFiles/ass1.dir/Restaurant.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ass1.dir/Restaurant.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/barper/CLionProjects/ass1/Restaurant.cpp > CMakeFiles/ass1.dir/Restaurant.cpp.i
+
+CMakeFiles/ass1.dir/Restaurant.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ass1.dir/Restaurant.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/barper/CLionProjects/ass1/Restaurant.cpp -o CMakeFiles/ass1.dir/Restaurant.cpp.s
+
 # Object files for target ass1
 ass1_OBJECTS = \
 "CMakeFiles/ass1.dir/main.cpp.o" \
-"CMakeFiles/ass1.dir/RestaurantClasses.cpp.o" \
-"CMakeFiles/ass1.dir/Customer.cpp.o"
+"CMakeFiles/ass1.dir/Customer.cpp.o" \
+"CMakeFiles/ass1.dir/Table.cpp.o" \
+"CMakeFiles/ass1.dir/Dish.cpp.o" \
+"CMakeFiles/ass1.dir/Restaurant.cpp.o"
 
 # External object files for target ass1
 ass1_EXTERNAL_OBJECTS =
 
 ass1: CMakeFiles/ass1.dir/main.cpp.o
-ass1: CMakeFiles/ass1.dir/RestaurantClasses.cpp.o
 ass1: CMakeFiles/ass1.dir/Customer.cpp.o
+ass1: CMakeFiles/ass1.dir/Table.cpp.o
+ass1: CMakeFiles/ass1.dir/Dish.cpp.o
+ass1: CMakeFiles/ass1.dir/Restaurant.cpp.o
 ass1: CMakeFiles/ass1.dir/build.make
 ass1: CMakeFiles/ass1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/barper/CLionProjects/ass1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable ass1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/barper/CLionProjects/ass1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable ass1"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ass1.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
