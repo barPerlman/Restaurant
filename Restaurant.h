@@ -23,6 +23,14 @@ private:
     std::vector<Table*> tables;
     std::vector<Dish> menu;
     std::vector<BaseAction*> actionsLog;
+    DishType stringToDishType(std::string s_d_type); //this convert string to my dishType enum
+    void readConfigFile(std::ifstream &file, std::string &readLine);
+
+    void readTablesDescription(const std::string &delimiter, size_t pos, std::vector<int> &tablesDescription,
+                               std::ifstream &file, std::string &readLine, std::string &token) const;
+
+    void readMenu( std::ifstream &file, std::string &readLine, const std::string &delimiter, size_t pos,
+                  std::string &token);
 };
 
 #endif
