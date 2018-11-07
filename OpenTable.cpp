@@ -16,7 +16,8 @@ OpenTable::OpenTable(int id, std::vector<Customer *> &customersList):BaseAction(
 //receive restaurant and perform the action open tabale on it
 void OpenTable::act(Restaurant &restaurant){
     //can't open table
-    if(tableId<0||tableId>=restaurant.getNumOfTables()||restaurant.getTable(tableId)->isOpen()){
+    if(tableId<0||tableId>=restaurant.getNumOfTables()||restaurant.getTable(tableId)->isOpen()||
+    restaurant.getTable(tableId)->getCapacity()<customers.size()){
         error("Table does not exist or is already open");
     }
     else{      //can open table
@@ -32,11 +33,12 @@ void OpenTable::act(Restaurant &restaurant){
 }
 //print a feedback to the open table command
 std::string OpenTable::toString() const{
-    string openStr; //holds the message to print
+    string openStr=""; //holds the message to print
     if(getStatus()==COMPLETED) {    //command completed successfully
-        openStr = "open " + tableId;
+        openStr.append("open " + to_string(tableId));
         for (Customer *c:customers) {
-            openStr += " " + c->toString();
+
+            openStr=openStr+" " + c->toString();
 
         }
     }
