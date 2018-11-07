@@ -18,7 +18,7 @@ using namespace std;
 Restaurant::Restaurant(){}
 
 //constructor
-Restaurant::Restaurant(const std::string &configFilePath):open(true) {
+Restaurant::Restaurant(const std::string &configFilePath):open(false) {
     std::ifstream file(configFilePath);//open file to read
     string readLine; //holds the current read line from the file
     do{
@@ -84,7 +84,6 @@ void Restaurant::readTablesDescription(const string &delimiter, size_t pos, vect
         token = readLine.substr(0, pos);    //split
         //push capacity into vector
         tablesDescription.push_back(stoi(token));
-        //std::cout << token << std::endl;
         readLine.erase(0, pos + delimiter.length());
     }
 //push last capacity from file to vector of capacities
@@ -105,10 +104,56 @@ DishType Restaurant::stringToDishType(std::string s_d_type) {
         return ALC;
     }
 }
+
 //this function responsible for the restaurant management
 void Restaurant::start() {
+    open=true;
     std::cout<<"Restaurant is now open!"<<std::endl;
+    string exeCommand;  //holds the current command to execute received by the user
+    do{//get the input command to execute from user in loop
+        std::getline(std::cin,exeCommand);
+        size_t pos = exeCommand.find(" ");   //use space as delimeter and take the first word
+        string firstWord= exeCommand.substr(0, pos);    //split
+
+        //the command cases:
+        if(firstWord=="open"){
+
+            string delimeter=" ";
+            size_t pos=exeCommand.find(delimeter);
+            string tableIdStr=exeCommand.substr(0, pos);    //split
+            exeCommand.erase(0, pos + delimeter.length());
+            openTable(exeCommand);
+        }
+        else if(firstWord=="order"){
+            orderFromTable(exeCommand);
+        }
+        else if(firstWord=="move"){
+            moveCustomer(exeCommand);
+        }
+        else if(firstWord=="close"){
+            closeTable(exeCommand);
+        }
+        else if(firstWord=="closeall"){
+            closeAllTables();
+        }
+        else if(firstWord=="menu"){
+            printMenu();
+        }
+        else if(firstWord=="status"){
+            printTableStatus(exeCommand);
+        }
+        else if(firstWord=="log"){
+            printActionsLog();
+        }
+        else if(firstWord=="backup"){
+            backupRestaurant();
+        }
+        else if(firstWord=="restore"){
+            restoreRestaurant();
+        }
+    }while(exeCommand!="closeall");
 }
+
 //get the amount of tables in restaurant
 int Restaurant::getNumOfTables() const{
     return tables.size();
@@ -202,4 +247,88 @@ Restaurant& Restaurant::operator=(Restaurant &&other) {
         }
     }
     return *this;
+}
+
+void Restaurant::openTable(string &exeCommand){
+
+    //split the execution sentence to its parts:
+    string command=exeCommand;  //copy of the command sentence
+    string delimeter=" ";
+    size_t pos=command.find(delimeter); //position in command sentence
+    string tableIdStr=command.substr(0, pos);    //split
+
+    std::cout<<tableIdStr<<std::endl;
+    command.erase(0, pos + delimeter.length());
+
+
+    //read the customers with their strategyType
+    string pairNameType;
+    string CustomerName;    //name of customer
+    string CustomerType;    //typr of customer
+    //1.read till the pair space
+    //2.split them and create instance of customer on heap
+    //3.push pointer to instance into vector of pointer
+    //send vector of customers and table id to open table constructor
+    vector <Customer*> customersList;
+    int customerId=0;
+    size_t posPair;
+    while ((pos = command.find(delimeter)) != std::string::npos) {
+        pairNameType = command.substr(0, pos);    //split
+        command.erase(0, pos + delimeter.length());
+        posPair=command.find(","); //position in pairNAmeType sentence
+        //split pair to name and type
+        CustomerName=pairNameType.substr(0,posPair);
+        pairNameType.erase(0,pos+1);
+        CustomerType=pairNameType.substr(0,posPair);
+        pairNameType.erase(0,pos+1);
+        buildCustomersPointersVector(CustomerName,customerId,CustomerType,customersList);
+        customerId++;
+    }
+    pairNameType = command.substr(0, pos);    //split
+    command.erase(0, pos + delimeter.length());
+    //split pair to name and type
+    CustomerName=pairNameType.substr(0,posPair);
+    pairNameType.erase(0,pos+1);
+    CustomerType=pairNameType.substr(0,posPair);
+    pairNameType.erase(0,pos+1);
+    buildCustomersPointersVector(CustomerName,customerId,CustomerType,customersList);
+    for(Customer *c:customersList){
+        std::cout<<c->toString()<<std::endl;
+    }
+    //OpenTable *ot=new OpenTable(stoi(tableIdStr),customersList);
+    //actionsLog.push_back(ot);   //push action to action log
+
+
+
+
+
+
+}
+void Restaurant::orderFromTable(string &exeCommand){}
+void Restaurant::moveCustomer(string &exeCommand){}
+void Restaurant::closeTable(string &exeCommand){}
+void Restaurant::closeAllTables(){}
+void Restaurant::printMenu(){}
+void Restaurant::printTableStatus(string &exeCommand){}
+void Restaurant::printActionsLog(){}
+void Restaurant::backupRestaurant(){}
+void Restaurant::restoreRestaurant(){}
+
+
+//this function creates and push the suit type of customer into customers list
+void Restaurant::buildCustomersPointersVector(string CustomerName,int customerId,string CustomerType,vector<Customer*> &customersList){
+       Customer *customer;
+        if(CustomerType=="veg"){
+            customer=new VegetarianCustomer(CustomerName,customerId);
+        }
+        else if(CustomerType=="chp"){
+            customer=new CheapCustomer(CustomerName,customerId);
+        }
+        else if(CustomerType=="spc"){
+            customer=new SpicyCustomer(CustomerName,customerId);
+        }
+        else if(CustomerType=="alc"){
+            customer=new AlchoholicCustomer(CustomerName,customerId);
+        }
+        customersList.push_back(customer);
 }
