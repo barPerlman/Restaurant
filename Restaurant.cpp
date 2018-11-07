@@ -303,14 +303,12 @@ void Restaurant::openTable(string &exeCommand){
         //create instance of the action open table and save it to log
         BaseAction *open_table=new OpenTable(stoi(tableIdStr),customersList);
         actionsLog.push_back(open_table);   //push action to action log
+        //perform open table and send the restaurant as parameter
+        open_table->act(*this);
 
-/*
-        for(Customer *c:customersList){
-            std::cout<<c->getName()<<std::endl;
-            std::cout<<c->getId()<<std::endl;
-        }
 
-*/
+
+
 
 
 

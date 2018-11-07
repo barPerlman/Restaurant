@@ -13,7 +13,7 @@
 using namespace std;
 /////////////////////////Table Class functions/////////////////////////////////////
 //constructor
-Table::Table(int t_capacity):capacity(t_capacity){}
+Table::Table(int t_capacity):capacity(t_capacity),open(false){}
 
 //getter of table capacity
 int Table::getCapacity() const{
