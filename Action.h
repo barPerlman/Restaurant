@@ -30,10 +30,19 @@ private:
 
 class OpenTable : public BaseAction {
 public:
+    //destructor
+
+    virtual ~OpenTable(); //destructor
+    OpenTable(const OpenTable &other);    //copy constructor
+    OpenTable(OpenTable &&other);         //move constructor
+
+
+
     OpenTable(int id, std::vector<Customer *> &customersList);
     void act(Restaurant &restaurant);
     std::string toString() const;
 private:
+    void clear();
 	const int tableId;
 	const std::vector<Customer *> customers;
 };

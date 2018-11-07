@@ -220,7 +220,12 @@ Restaurant& Restaurant::operator=(const Restaurant &other) {
     if(this!=&other){
         clear();
         tables=other.tables;
-        menu=other.menu;
+
+        //assignment of menu
+        menu.clear();
+        for(Dish d:other.menu){
+            menu.push_back(d);
+        }
         actionsLog=other.actionsLog;
     }
     return *this;
@@ -232,7 +237,12 @@ Restaurant& Restaurant::operator=(Restaurant &&other) {
     if(this!=&other){
         clear();
         tables=other.tables;
-        menu=other.menu;
+
+        //assignment of menu
+        menu.clear();
+        for(Dish d:other.menu){
+            menu.push_back(d);
+        }
         actionsLog=other.actionsLog;
         //assign nullptr in vectors values:
         //for tables:
@@ -305,15 +315,8 @@ void Restaurant::openTable(string &exeCommand){
         actionsLog.push_back(open_table);   //push action to action log
         //perform open table and send the restaurant as parameter
         open_table->act(*this);
-
-
-
-
-
-
-
-
-
+        //print feedback from operation
+        std::cout<<open_table->toString()<<std::endl;
 
 
 }

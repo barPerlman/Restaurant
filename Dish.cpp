@@ -60,25 +60,4 @@ string Dish::toString() const {
     return dishString;
 
 }
-//copy assignment
-Dish& Dish::operator=(const Dish &other) {
-    if(this!=&other){
-       int*p=(int*)&id;
-        *p=other.getId();
 
-        string *n=(string*)&name;
-        *n=other.getName();
-
-        int*pr=(int*)&price;
-        *pr=other.getPrice();
-
-        DishType *t=(DishType *)&type;
-        *t=other.getType();
-
-        delete(p);
-        delete(n);
-        delete(pr);
-        delete(t);
-    }
-    return *this;
-}

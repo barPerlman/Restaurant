@@ -47,9 +47,9 @@ void Table::removeCustomer(int id){
     if(found){
         vector<OrderPair> orderListCopy(orderList);  //deep copy orders to temp list orders
         orderList.clear();
-        for(int i=0;i<orderListCopy.size();i++){    //get back to origin vetor the orders without orders attributed to the 'id'
-            if(orderListCopy.at(i).first!=id){
-                orderList.push_back(orderListCopy.at(i));
+        for(OrderPair op:orderListCopy){    //get back to origin vetor the orders without orders attributed to the 'id'
+            if(op.first!=id){
+                orderList.push_back(op);
             }
         }
 
@@ -58,10 +58,9 @@ void Table::removeCustomer(int id){
 
 //return a customer with matching id from the list
 Customer* Table::getCustomer(int id){
-    for(int i=0;i<customersList.size();i++){
-        Customer*& currCustomer=customersList.at(i);
-        if(currCustomer->getId()==id){   //found such customer
-            return currCustomer;
+    for(Customer* c:customersList){
+        if(c->getId()==id){   //found such customer
+            return c;
         }
     }
     return nullptr;
@@ -96,8 +95,8 @@ void Table::closeTable(){
 //get the sum of the dishes ordered together
 int Table::getBill(){
     int billSum=0;
-    for(int i=0;i<orderList.size();i++){
-        billSum+=orderList.at(i).second.getPrice();
+    for(OrderPair op:orderList){
+        billSum+=op.second.getPrice();
     }
     return billSum;
 }

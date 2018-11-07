@@ -13,6 +13,31 @@ using namespace std;
 //constructor
 OpenTable::OpenTable(int id, std::vector<Customer *> &customersList):BaseAction(),tableId(id),customers(customersList){}
 
+//destructor of openTable class
+OpenTable::~OpenTable() {
+    clear();
+}
+
+
+//copy constructor
+OpenTable::OpenTable(const OpenTable &other):
+customers(other.customers),
+tableId(other.tableId){}
+
+//move constructor
+OpenTable::OpenTable(OpenTable &&other):customers(customers),tableId(tableId){
+    for(Customer* c:other.customers){
+        delete[] c;
+        c= nullptr;
+    }
+}
+
+void OpenTable::clear(){
+    for(Customer *customer:customers){
+        delete[] customer;
+        customer= nullptr;
+    }
+}
 //receive restaurant and perform the action open tabale on it
 void OpenTable::act(Restaurant &restaurant){
     //can't open table
