@@ -251,52 +251,67 @@ Restaurant& Restaurant::operator=(Restaurant &&other) {
 
 void Restaurant::openTable(string &exeCommand){
 
-    //split the execution sentence to its parts:
-    string command=exeCommand;  //copy of the command sentence
-    string delimeter=" ";
-    size_t pos=command.find(delimeter); //position in command sentence
-    string tableIdStr=command.substr(0, pos);    //split
+        //split the execution sentence to its parts:
+        string command=exeCommand;  //copy of the command sentence
+        string delimeter=" ";
+        size_t pos=command.find(delimeter); //position in command sentence
+        string tableIdStr=command.substr(0, pos);    //split
 
-    std::cout<<tableIdStr<<std::endl;
-    command.erase(0, pos + delimeter.length());
-
-
-    //read the customers with their strategyType
-    string pairNameType;
-    string CustomerName;    //name of customer
-    string CustomerType;    //typr of customer
-    //1.read till the pair space
-    //2.split them and create instance of customer on heap
-    //3.push pointer to instance into vector of pointer
-    //send vector of customers and table id to open table constructor
-    vector <Customer*> customersList;
-    int customerId=0;
-    size_t posPair;
-    while ((pos = command.find(delimeter)) != std::string::npos) {
-        pairNameType = command.substr(0, pos);    //split
         command.erase(0, pos + delimeter.length());
-        posPair=command.find(","); //position in pairNAmeType sentence
-        //split pair to name and type
-        CustomerName=pairNameType.substr(0,posPair);
-        pairNameType.erase(0,pos+1);
-        CustomerType=pairNameType.substr(0,posPair);
-        pairNameType.erase(0,pos+1);
+
+
+        //read the customers with their strategyType
+        string pairNameType;
+        string CustomerName;    //name of customer
+        string CustomerType;    //typr of customer
+        //1.read till the pair space
+        //2.split them and create instance of customer on heap
+        //3.push pointer to instance into vector of pointer
+        //send vector of customers and table id to open table constructor
+        vector <Customer*> customersList;
+        int customerId=0;
+        size_t posPair;
+        while((pos=command.find(delimeter))!=std::string::npos){
+
+            pairNameType = command.substr(0, pos);    //get name with type
+
+            command.erase(0, pos + delimeter.length()); //remove red part from sentence
+            //separate pair
+            pos=pairNameType.find(",");  //update last index in strin to read
+            CustomerName=pairNameType.substr(0,pos);
+            pairNameType.erase(0,pos+1); //remove red part from pair sentence
+
+            pos=pairNameType.find('\0');    //tells where type ends
+            CustomerType=pairNameType.substr(0,pos);    //read type
+            pos=0;
+
+            //create a customer and push into vector
+            buildCustomersPointersVector(CustomerName,customerId,CustomerType,customersList);
+            customerId++;   //raise the id of next customer
+
+        }
+        //read the last pair from command
+        pairNameType = command.substr(0, pos);    //get name with type
+        pos=pairNameType.find(",");  //update last index in string to read
+        CustomerName=pairNameType.substr(0,pos);
+        pairNameType.erase(0,pos+1); //remove red part from pair sentence
+        pos=pairNameType.find('\0');    //tells where type ends
+        CustomerType=pairNameType.substr(0,pos);    //read type
+        //create a customer and push into vector
         buildCustomersPointersVector(CustomerName,customerId,CustomerType,customersList);
-        customerId++;
-    }
-    pairNameType = command.substr(0, pos);    //split
-    command.erase(0, pos + delimeter.length());
-    //split pair to name and type
-    CustomerName=pairNameType.substr(0,posPair);
-    pairNameType.erase(0,pos+1);
-    CustomerType=pairNameType.substr(0,posPair);
-    pairNameType.erase(0,pos+1);
-    buildCustomersPointersVector(CustomerName,customerId,CustomerType,customersList);
-    for(Customer *c:customersList){
-        std::cout<<c->toString()<<std::endl;
-    }
-    //OpenTable *ot=new OpenTable(stoi(tableIdStr),customersList);
-    //actionsLog.push_back(ot);   //push action to action log
+
+        //create instance of the action open table and save it to log
+        BaseAction *open_table=new OpenTable(stoi(tableIdStr),customersList);
+        actionsLog.push_back(open_table);   //push action to action log
+
+/*
+        for(Customer *c:customersList){
+            std::cout<<c->getName()<<std::endl;
+            std::cout<<c->getId()<<std::endl;
+        }
+
+*/
+
 
 
 

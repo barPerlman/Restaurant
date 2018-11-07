@@ -177,6 +177,33 @@ Dish.cpp.s:
 	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/Dish.cpp.s
 .PHONY : Dish.cpp.s
 
+OpenTable.o: OpenTable.cpp.o
+
+.PHONY : OpenTable.o
+
+# target to build an object file
+OpenTable.cpp.o:
+	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/OpenTable.cpp.o
+.PHONY : OpenTable.cpp.o
+
+OpenTable.i: OpenTable.cpp.i
+
+.PHONY : OpenTable.i
+
+# target to preprocess a source file
+OpenTable.cpp.i:
+	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/OpenTable.cpp.i
+.PHONY : OpenTable.cpp.i
+
+OpenTable.s: OpenTable.cpp.s
+
+.PHONY : OpenTable.s
+
+# target to generate assembly for a file
+OpenTable.cpp.s:
+	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/OpenTable.cpp.s
+.PHONY : OpenTable.cpp.s
+
 Restaurant.o: Restaurant.cpp.o
 
 .PHONY : Restaurant.o
@@ -273,6 +300,9 @@ help:
 	@echo "... Dish.o"
 	@echo "... Dish.i"
 	@echo "... Dish.s"
+	@echo "... OpenTable.o"
+	@echo "... OpenTable.i"
+	@echo "... OpenTable.s"
 	@echo "... Restaurant.o"
 	@echo "... Restaurant.i"
 	@echo "... Restaurant.s"
