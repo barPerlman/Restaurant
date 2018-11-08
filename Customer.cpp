@@ -83,7 +83,7 @@ std::vector<int> VegetarianCustomer::order(const std::vector<Dish> &menu){
 }
 
 std::string VegetarianCustomer:: toString() const {
-    return this->getName();
+    return this->getName()+",VEG";
 }
 
 /**
@@ -135,7 +135,7 @@ std::vector<int> SpicyCustomer::order(const std::vector<Dish> &menu) {
         }
 }
 std::string SpicyCustomer::toString() const {
-    return this->getName();
+    return this->getName()+",SPC";
 }
 
 /**
@@ -168,7 +168,7 @@ std::vector<int> CheapCustomer::order(const std::vector<Dish> &menu){
 }
 
 std::string CheapCustomer:: toString() const {
-    return this->getName();
+    return this->getName()+",CHP";
 }
 
 /**
@@ -198,7 +198,7 @@ std::vector<int> AlchoholicCustomer::order(const std::vector<Dish> &menu) {
 }
 
 std::string AlchoholicCustomer:: toString() const {
-    return this->getName();
+    return this->getName()+",ALC";
 }
 
 

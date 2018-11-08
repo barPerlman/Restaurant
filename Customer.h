@@ -13,8 +13,9 @@ public:
     std::string getName() const;
     int getId() const;
     std::string castDishType(DishType dishType);
-    bool checkMenu(const std::vector<Dish> &menu,std::string str);
     virtual ~Customer(); // Destructor
+protected:
+    bool checkMenu(const std::vector<Dish> &menu,std::string str);
 private:
     const std::string name;
     const int id;
