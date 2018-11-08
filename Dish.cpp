@@ -56,7 +56,7 @@ string Dish::toString() const {
             break;}
     }
     string priceStr=to_string(price);
-    string dishString=to_string(id)+" "+name+" "+typeStr+" "+priceStr+"NIS";
+    string dishString=name+" "+typeStr+" "+priceStr+"NIS";
     return dishString;
 
 }

@@ -84,6 +84,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/barper/CLionProjects/ass1/Action.cpp">
+			<Option target="ass1"/>
+		</Unit>
+		<Unit filename="/home/barper/CLionProjects/ass1/Action.h">
+			<Option target="ass1"/>
+		</Unit>
 		<Unit filename="/home/barper/CLionProjects/ass1/BaseAction.cpp">
 			<Option target="ass1"/>
 		</Unit>

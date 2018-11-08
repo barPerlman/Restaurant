@@ -90,6 +90,12 @@ void Table::openTable(){
 }
 //close table by change its status
 void Table::closeTable(){
+    //remove customers from table
+    for(Customer *c:customersList){
+        removeCustomer(c->getId());
+        c= nullptr;
+    }
+
     open=false;
 }
 //get the sum of the dishes ordered together

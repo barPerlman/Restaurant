@@ -123,6 +123,33 @@ ass1/fast:
 	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/build
 .PHONY : ass1/fast
 
+Action.o: Action.cpp.o
+
+.PHONY : Action.o
+
+# target to build an object file
+Action.cpp.o:
+	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/Action.cpp.o
+.PHONY : Action.cpp.o
+
+Action.i: Action.cpp.i
+
+.PHONY : Action.i
+
+# target to preprocess a source file
+Action.cpp.i:
+	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/Action.cpp.i
+.PHONY : Action.cpp.i
+
+Action.s: Action.cpp.s
+
+.PHONY : Action.s
+
+# target to generate assembly for a file
+Action.cpp.s:
+	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/Action.cpp.s
+.PHONY : Action.cpp.s
+
 BaseAction.o: BaseAction.cpp.o
 
 .PHONY : BaseAction.o
@@ -348,6 +375,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... ass1"
+	@echo "... Action.o"
+	@echo "... Action.i"
+	@echo "... Action.s"
 	@echo "... BaseAction.o"
 	@echo "... BaseAction.i"
 	@echo "... BaseAction.s"

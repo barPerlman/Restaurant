@@ -66,6 +66,7 @@ std::string OpenTable::toString() const{
             openStr=openStr+" " + c->toString();
 
         }
+        openStr+=" Completed";
     }
     else{       //didn't complete successfully
         openStr=getErrorMsg();

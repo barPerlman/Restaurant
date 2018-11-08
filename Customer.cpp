@@ -35,18 +35,10 @@ std::string Customer::castDishType(DishType dishType) {
     return typeStr;
 }
 
-//checkkkkkk
-bool Customer::checkMenu(const std::vector<Dish> &menu,std::string str){
-    for(Dish dish:menu)
-        if(castDishType(dish.getType()).compare(str) == 0)
-            return true;
-    return false;
-}
+
 
 // Destructor
-Customer::~Customer() {
-
-}
+Customer::~Customer() {}
 
 /**
 * A VegetarianCustomer is one type of a Customer in the restaurant.

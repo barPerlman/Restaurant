@@ -11,6 +11,8 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include "Action.h"
+
 using namespace std;
 
 /////////////////////////Restaurant Class functions/////////////////////////////////////
@@ -155,6 +157,12 @@ void Restaurant::start() {
         else if(firstWord=="restore"){
             restoreRestaurant();
         }
+        string s;
+        if(open){
+            s="open";}
+        else{
+            s="closed";}
+        std::cout<<"rest is " +s<<std::endl;
     }while(exeCommand!="closeall");
 }
 
@@ -319,8 +327,7 @@ void Restaurant::openTable(string &exeCommand){
         actionsLog.push_back(open_table);   //push action to action log
         //perform open table and send the restaurant as parameter
         open_table->act(*this);
-        //print feedback from operation
-        std::cout<<open_table->toString()<<std::endl;
+
 
 
 }
@@ -330,9 +337,42 @@ void Restaurant::orderFromTable(string &exeCommand){
 
 
 void Restaurant::moveCustomer(string &exeCommand){}
-void Restaurant::closeTable(string &exeCommand){}
-void Restaurant::closeAllTables(){}
-void Restaurant::printMenu(){}
+
+
+void Restaurant::closeTable(string &exeCommand) {
+
+
+    string delimeter = " ";
+    size_t pos = exeCommand.find(delimeter);
+    exeCommand.erase(0, pos + delimeter.length());
+    pos = exeCommand.find('\r');
+    string tableIdStr = exeCommand.substr(0, pos);    //split
+
+    BaseAction *close_table = new Close(stoi(tableIdStr));
+    close_table->act(*this);
+    actionsLog.push_back(close_table);
+    std::cout<<close_table->toString()<<std::endl;
+
+
+
+
+}
+
+void Restaurant::closeAllTables(){
+
+    BaseAction *close_all=new CloseAll();
+    actionsLog.push_back(close_all);
+    close_all->act(*this);
+
+
+
+    open=false; //close restaurant
+}
+void Restaurant::printMenu(){
+    BaseAction *print_menu=new PrintMenu();
+    actionsLog.push_back(print_menu);
+    print_menu->act(*this);
+}
 void Restaurant::printTableStatus(string &exeCommand){}
 void Restaurant::printActionsLog(){}
 void Restaurant::backupRestaurant(){}
