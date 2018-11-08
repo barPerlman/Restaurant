@@ -36,6 +36,10 @@ void Restaurant::readConfigFile(ifstream &file, string &readLine) {
     //get tables amount
     int tablesAnount;   //holds the amount of tables from file
     vector<int> tablesDescription;  //vector of capacities of each table
+    //start read file after amount of tables
+    while (readLine!="#number of tables\r"){
+        getline(file,readLine);
+    }
     getline(file, readLine);    //read next line
     tablesAnount = stoi(readLine);
     //send to function which get the capacities parameters of the tables
@@ -320,7 +324,11 @@ void Restaurant::openTable(string &exeCommand){
 
 
 }
-void Restaurant::orderFromTable(string &exeCommand){}
+void Restaurant::orderFromTable(string &exeCommand){
+    std::cout<<exeCommand<<std::endl;
+}
+
+
 void Restaurant::moveCustomer(string &exeCommand){}
 void Restaurant::closeTable(string &exeCommand){}
 void Restaurant::closeAllTables(){}

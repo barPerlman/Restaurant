@@ -26,19 +26,7 @@ Dish.h
 string
 -
 
-/home/barper/CLionProjects/ass1/Restaurant.h
-vector
--
-string
--
-Dish.h
-/home/barper/CLionProjects/ass1/Dish.h
-Table.h
-/home/barper/CLionProjects/ass1/Table.h
-Action.h
-/home/barper/CLionProjects/ass1/Action.h
-
-/home/barper/CLionProjects/ass1/Table.cpp
+/home/barper/CLionProjects/ass1/Restaurant.cpp
 Restaurant.h
 /home/barper/CLionProjects/ass1/Restaurant.h
 Table.h
@@ -55,6 +43,20 @@ string
 -
 fstream
 -
+vector
+-
+
+/home/barper/CLionProjects/ass1/Restaurant.h
+vector
+-
+string
+-
+Dish.h
+/home/barper/CLionProjects/ass1/Dish.h
+Table.h
+/home/barper/CLionProjects/ass1/Table.h
+Action.h
+/home/barper/CLionProjects/ass1/Action.h
 
 /home/barper/CLionProjects/ass1/Table.h
 vector

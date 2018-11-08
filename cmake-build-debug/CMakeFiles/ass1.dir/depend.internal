@@ -26,6 +26,13 @@ CMakeFiles/ass1.dir/OpenTable.cpp.o
  /home/barper/CLionProjects/ass1/OpenTable.cpp
  /home/barper/CLionProjects/ass1/Restaurant.h
  /home/barper/CLionProjects/ass1/Table.h
+CMakeFiles/ass1.dir/Order.cpp.o
+ /home/barper/CLionProjects/ass1/Action.h
+ /home/barper/CLionProjects/ass1/Customer.h
+ /home/barper/CLionProjects/ass1/Dish.h
+ /home/barper/CLionProjects/ass1/Order.cpp
+ /home/barper/CLionProjects/ass1/Restaurant.h
+ /home/barper/CLionProjects/ass1/Table.h
 CMakeFiles/ass1.dir/Restaurant.cpp.o
  /home/barper/CLionProjects/ass1/Action.h
  /home/barper/CLionProjects/ass1/Customer.h

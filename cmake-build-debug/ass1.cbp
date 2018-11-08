@@ -102,6 +102,9 @@
 		<Unit filename="/home/barper/CLionProjects/ass1/OpenTable.cpp">
 			<Option target="ass1"/>
 		</Unit>
+		<Unit filename="/home/barper/CLionProjects/ass1/Order.cpp">
+			<Option target="ass1"/>
+		</Unit>
 		<Unit filename="/home/barper/CLionProjects/ass1/Restaurant.cpp">
 			<Option target="ass1"/>
 		</Unit>

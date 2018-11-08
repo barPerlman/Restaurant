@@ -26,6 +26,13 @@ CMakeFiles/ass1.dir/OpenTable.cpp.o: ../OpenTable.cpp
 CMakeFiles/ass1.dir/OpenTable.cpp.o: ../Restaurant.h
 CMakeFiles/ass1.dir/OpenTable.cpp.o: ../Table.h
 
+CMakeFiles/ass1.dir/Order.cpp.o: ../Action.h
+CMakeFiles/ass1.dir/Order.cpp.o: ../Customer.h
+CMakeFiles/ass1.dir/Order.cpp.o: ../Dish.h
+CMakeFiles/ass1.dir/Order.cpp.o: ../Order.cpp
+CMakeFiles/ass1.dir/Order.cpp.o: ../Restaurant.h
+CMakeFiles/ass1.dir/Order.cpp.o: ../Table.h
+
 CMakeFiles/ass1.dir/Restaurant.cpp.o: ../Action.h
 CMakeFiles/ass1.dir/Restaurant.cpp.o: ../Customer.h
 CMakeFiles/ass1.dir/Restaurant.cpp.o: ../Dish.h
