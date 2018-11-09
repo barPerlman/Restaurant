@@ -22,16 +22,13 @@ int Customer::getId() const {return id;}
 
 std::string Customer::castDishType(DishType dishType) {
     std::string typeStr;
-    switch(dishType){
-        case VEG:
-            typeStr="VEG";
-        case SPC:
-            typeStr="SPC";
-        case BVG:
-            typeStr="BVG";
-        case ALC:
-            typeStr="ALC";
-    }
+    if(dishType==ALC)
+        typeStr="ALC";
+    else if(dishType==SPC)
+        typeStr="SPC";
+    else if(dishType==BVG)
+        typeStr="BVG";
+    else typeStr="VEG";
     return typeStr;
 }
 
@@ -55,27 +52,32 @@ VegetarianCustomer::VegetarianCustomer(std::string name, int id): Customer(name,
 
 std::vector<int> VegetarianCustomer::order(const std::vector<Dish> &menu){
     // choosing the vegetarian dish with the smallest id in the menu
-    int minId=static_cast<int>(menu.size());
-    for(Dish dish:menu)
-        if (castDishType(dish.getType()).compare("VEG") == 0)
-            if (dish.getId() <= minId)
-                minId = dish.getId();
+    std::vector<int> vec;
+    int dishId(0);
+    for(Dish dish:menu) {
+        if (castDishType(dish.getType()).compare("VEG") == 0) {
+            dishId = dish.getId();
+            break;
+        }
+    }
+    vec.push_back(dishId);
     // choosing the most expensive beverage in the menu
     int maxPrice(0);
-    int secId(0);
-    for(Dish dish:menu)
-        if(castDishType(dish.getType()).compare("BVG")==0)
-            if(dish.getPrice()>=maxPrice)
+    int bvgId(0);
+    for(Dish dish:menu) {
+        if (castDishType(dish.getType()).compare("BVG") == 0)
+            if (dish.getPrice() >= maxPrice)
                 if (dish.getPrice() != maxPrice) {
                     maxPrice = dish.getPrice();
-                    secId = dish.getId();
+                    bvgId = dish.getId();
                 }
-    std::vector<int> vec (minId,secId);
+    }
+    vec.push_back(bvgId);
     return vec;
 }
 
 std::string VegetarianCustomer:: toString() const {
-    return this->getName()+",VEG";
+    return this->getName()+",veg";
 }
 
 /**
@@ -90,44 +92,45 @@ std::string VegetarianCustomer:: toString() const {
 *******************************************************/
 
 //Constructor
-SpicyCustomer::SpicyCustomer(std::string name, int id): Customer(name,id) {}
+SpicyCustomer::SpicyCustomer(std::string name, int id): Customer(name,id), flag(true) {}
 
 std::vector<int> SpicyCustomer::order(const std::vector<Dish> &menu) {
     // choosing the most expensive spicy dish in the menu
-    int maxPrice(0);
-    int firstId(0);
-    for (Dish dish:menu)
-        if (castDishType(dish.getType()).compare("VEG") == 0)
-            if (dish.getPrice() >= maxPrice) {
-                if (dish.getPrice() != maxPrice) {
-                    maxPrice = dish.getPrice();
-                    firstId = dish.getId();
-                }
-            }
-    // choosing the cheapest non-alcoholic beverage in the menu
-    int j(0);
-    int minPrice;
-    int secId(0);
-    for (Dish dish:menu)
-        if (castDishType(dish.getType()).compare("BVG")) {
-            if (j == 0) {
-                minPrice = dish.getPrice();
-                secId = dish.getId();
-                j++;
-            }
-            if (dish.getPrice() <= minPrice) {
-                if (dish.getPrice() != maxPrice) {
-                    minPrice = dish.getPrice();
-                    secId = dish.getId();
-                }
-            }
-            std::vector<int> vec(firstId, secId);
-
-            return vec;
+    if (flag) {// if this is the first order
+        std::vector<int> vec;
+        int maxPrice(0);
+        int dishId(0);
+        for (Dish dish:menu){
+            if (castDishType(dish.getType()).compare("SPC") == 0)
+                if (dish.getPrice() >= maxPrice)
+                    if (dish.getPrice() != maxPrice) {
+                        maxPrice = dish.getPrice();
+                        dishId = dish.getId();
+                    }
         }
+        flag=false;
+        vec.push_back(dishId);
+        return vec;
+    }
+    // choosing the cheapest non-alcoholic beverage in the menu
+    else {
+        std::vector<int> vec;
+        int minPrice=menu[0].getPrice();
+        int bvgId(0);
+        for (Dish dish:menu) {
+            if (castDishType(dish.getType()).compare("BVG") == 0)
+                if (dish.getPrice() <= minPrice)
+                    if (dish.getPrice() != minPrice) {
+                        minPrice = dish.getPrice();
+                        bvgId = dish.getId();
+                    }
+        }
+        vec.push_back(bvgId);
+        return vec;
+    }
 }
 std::string SpicyCustomer::toString() const {
-    return this->getName()+",SPC";
+    return this->getName()+",spc";
 }
 
 /**
@@ -141,26 +144,32 @@ std::string SpicyCustomer::toString() const {
 *******************************************************/
 
 //Constructor
-CheapCustomer::CheapCustomer(std::string name, int id): Customer(name,id) {}
+CheapCustomer::CheapCustomer(std::string name, int id): Customer(name,id), flag(true) {}
 
 std::vector<int> CheapCustomer::order(const std::vector<Dish> &menu){
     // choosing the cheapest dish in the menu	.
-    int j(0);
-    int minPrice=menu[0].getPrice();
-    int firstId=menu[0].getId();
-    for(Dish dish:menu)
-        if(dish.getPrice()<=minPrice)
-            if (dish.getPrice() != minPrice) {
-                minPrice = dish.getPrice();
-                firstId = dish.getId();
-            }
-    std::vector<int> vec (firstId);
-
-    return vec;
+    std::vector<int> vec;
+    if(flag) {
+        int j(0);
+        int minPrice = menu[0].getPrice();
+        int dishId(0);
+        for (Dish dish:menu) {
+            if (dish.getPrice() <= minPrice)
+                if (dish.getPrice() != minPrice) {
+                    minPrice = dish.getPrice();
+                    dishId = dish.getId();
+                }
+        }
+        vec.push_back(dishId);
+        flag= false;
+        return vec;
+    }
+    else
+        return vec;
 }
 
 std::string CheapCustomer:: toString() const {
-    return this->getName()+",CHP";
+    return this->getName()+",chp";
 }
 
 /**
@@ -174,23 +183,56 @@ ordering the cheapest one, and in each further order, he picks the next expensiv
 *******************************************************/
 
 //Constructor
-AlchoholicCustomer::AlchoholicCustomer(std::string name, int id): Customer(name,id) {}
+AlchoholicCustomer::AlchoholicCustomer(std::string name, int id): Customer(name,id),numOfOrders(-1) {}
 
 std::vector<int> AlchoholicCustomer::order(const std::vector<Dish> &menu) {
     // choosing the alcoholic beverages in the menu
-    int flag(0);
     std::vector<int> vec;
-    for (Dish dish:menu)
-        if (castDishType(dish.getType()).compare("ALC")) {
-            vec.push_back(dish.getId());
-            //לבדוק עם בר על המיון גם פה מהקטן לגדול לפי מחיר מנה
-        }
-        else flag++;
+    int tempPrice(0),tempId(0);
+    std::vector<Dish> alcMenu=sortAlcDish(menu);
+    std::vector<int> prices=exportParameter(alcMenu,0);
+    std::vector<int> ids=exportParameter(alcMenu,1);
+    for (int i = 0; i < static_cast<int>(alcMenu.size())-1; i++) // according bubble sort
+        for (int j = 0; j < static_cast<int>(alcMenu.size()) - i - 1; j++)// Last i elements are already in place
+            if (prices[j]> prices[j + 1]){
+                tempPrice=prices[j];
+                tempId=ids[j];
+                prices[j]=prices[j+1];
+                ids[j]=ids[j+1];
+                prices[j+1]=tempPrice;
+                ids[j+1]=tempId;
+            }
+    numOfOrders++;
+    if(numOfOrders<static_cast<int>(ids.size())){
+        vec.push_back(ids[numOfOrders]);
+    }
+    return vec;
+}
 
+// returns a vector which contains the alchoholic dishes in it
+std::vector<Dish> AlchoholicCustomer::sortAlcDish(const std::vector<Dish> &menu) {
+    std::vector<Dish> vec;
+    std::string s="chs";
+    for(Dish dish:menu)
+        if (castDishType(dish.getType()).compare("ALC")==0)
+            vec.push_back(dish);
+    return vec;
+}
+
+// returns a vector which contains the alchoholic dishes in it
+std::vector<int> AlchoholicCustomer::exportParameter(std::vector<Dish> alcMenu,int para) {
+    std::vector<int> vec;
+    if(para==0)
+        for(Dish dish:alcMenu)
+            vec.push_back(dish.getPrice());
+    else
+        for(Dish dish:alcMenu)
+            vec.push_back(dish.getId());
+    return vec;
 }
 
 std::string AlchoholicCustomer:: toString() const {
-    return this->getName()+",ALC";
+    return this->getName()+",alc";
 }
 
 

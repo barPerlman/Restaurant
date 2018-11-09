@@ -4,15 +4,15 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/barper/CLionProjects/ass1/Action.cpp" "/home/barper/CLionProjects/ass1/cmake-build-debug/CMakeFiles/ass1.dir/Action.cpp.o"
-  "/home/barper/CLionProjects/ass1/BaseAction.cpp" "/home/barper/CLionProjects/ass1/cmake-build-debug/CMakeFiles/ass1.dir/BaseAction.cpp.o"
-  "/home/barper/CLionProjects/ass1/Customer.cpp" "/home/barper/CLionProjects/ass1/cmake-build-debug/CMakeFiles/ass1.dir/Customer.cpp.o"
-  "/home/barper/CLionProjects/ass1/Dish.cpp" "/home/barper/CLionProjects/ass1/cmake-build-debug/CMakeFiles/ass1.dir/Dish.cpp.o"
-  "/home/barper/CLionProjects/ass1/OpenTable.cpp" "/home/barper/CLionProjects/ass1/cmake-build-debug/CMakeFiles/ass1.dir/OpenTable.cpp.o"
-  "/home/barper/CLionProjects/ass1/Order.cpp" "/home/barper/CLionProjects/ass1/cmake-build-debug/CMakeFiles/ass1.dir/Order.cpp.o"
-  "/home/barper/CLionProjects/ass1/Restaurant.cpp" "/home/barper/CLionProjects/ass1/cmake-build-debug/CMakeFiles/ass1.dir/Restaurant.cpp.o"
-  "/home/barper/CLionProjects/ass1/Table.cpp" "/home/barper/CLionProjects/ass1/cmake-build-debug/CMakeFiles/ass1.dir/Table.cpp.o"
-  "/home/barper/CLionProjects/ass1/main.cpp" "/home/barper/CLionProjects/ass1/cmake-build-debug/CMakeFiles/ass1.dir/main.cpp.o"
+  "/home/moran/Desktop/ass1/Action.cpp" "/home/moran/Desktop/ass1/cmake-build-debug/CMakeFiles/ass1.dir/Action.cpp.o"
+  "/home/moran/Desktop/ass1/BaseAction.cpp" "/home/moran/Desktop/ass1/cmake-build-debug/CMakeFiles/ass1.dir/BaseAction.cpp.o"
+  "/home/moran/Desktop/ass1/Customer.cpp" "/home/moran/Desktop/ass1/cmake-build-debug/CMakeFiles/ass1.dir/Customer.cpp.o"
+  "/home/moran/Desktop/ass1/Dish.cpp" "/home/moran/Desktop/ass1/cmake-build-debug/CMakeFiles/ass1.dir/Dish.cpp.o"
+  "/home/moran/Desktop/ass1/OpenTable.cpp" "/home/moran/Desktop/ass1/cmake-build-debug/CMakeFiles/ass1.dir/OpenTable.cpp.o"
+  "/home/moran/Desktop/ass1/Order.cpp" "/home/moran/Desktop/ass1/cmake-build-debug/CMakeFiles/ass1.dir/Order.cpp.o"
+  "/home/moran/Desktop/ass1/Restaurant.cpp" "/home/moran/Desktop/ass1/cmake-build-debug/CMakeFiles/ass1.dir/Restaurant.cpp.o"
+  "/home/moran/Desktop/ass1/Table.cpp" "/home/moran/Desktop/ass1/cmake-build-debug/CMakeFiles/ass1.dir/Table.cpp.o"
+  "/home/moran/Desktop/ass1/main.cpp" "/home/moran/Desktop/ass1/cmake-build-debug/CMakeFiles/ass1.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

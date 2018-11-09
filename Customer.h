@@ -35,6 +35,7 @@ public:
     std::vector<int> order(const std::vector<Dish> &menu);
     std::string toString() const;
 private:
+	bool flag; // check if the customer already ordered before
 };
 
 
@@ -44,6 +45,7 @@ public:
     std::vector<int> order(const std::vector<Dish> &menu);
     std::string toString() const;
 private:
+	bool flag;// checks if this is the first time he order something
 };
 
 
@@ -53,7 +55,9 @@ public:
     std::vector<int> order(const std::vector<Dish> &menu);
     std::string toString() const;
 private:
+	int numOfOrders;// count the number of times he ordered
+	std::vector<Dish> sortAlcDish(const std::vector<Dish> &menu);// sort the alc dishes from the menu
+	std::vector<int> exportParameter(std::vector<Dish> alcMenu,int para);// returns a vector with : prices if para=0,indexes if para=1
 };
-
 
 #endif
