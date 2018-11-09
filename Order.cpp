@@ -17,6 +17,7 @@ void Order::act(Restaurant &restaurant){
     //check that table with such id is exist and open
     if(tableId>=0&&tableId<restaurant.getNumOfTables() && restaurant.getTable(tableId)->isOpen()) {
         restaurant.getTable(tableId)->order(restaurant.getMenu());
+        complete();
     }
     else{
         //check if should i print it to screen

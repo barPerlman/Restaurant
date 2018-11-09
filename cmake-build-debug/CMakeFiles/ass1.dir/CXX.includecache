@@ -26,11 +26,9 @@ Dish.h
 string
 -
 
-/home/barper/CLionProjects/ass1/Restaurant.cpp
-Restaurant.h
-/home/barper/CLionProjects/ass1/Restaurant.h
-Table.h
-/home/barper/CLionProjects/ass1/Table.h
+/home/barper/CLionProjects/ass1/PrintActionsLog.cpp
+Action.h
+/home/barper/CLionProjects/ass1/Action.h
 Restaurant.h
 /home/barper/CLionProjects/ass1/Restaurant.h
 iostream
@@ -45,8 +43,6 @@ fstream
 -
 vector
 -
-Action.h
-/home/barper/CLionProjects/ass1/Action.h
 
 /home/barper/CLionProjects/ass1/Restaurant.h
 vector
