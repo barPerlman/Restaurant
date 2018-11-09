@@ -20,12 +20,28 @@ CMakeFiles/ass1.dir/Customer.cpp.o
  /home/moran/Desktop/ass1/Customer.h
  /home/moran/Desktop/ass1/Dish.h
 CMakeFiles/ass1.dir/Dish.cpp.o
+<<<<<<< HEAD
  /home/moran/Desktop/ass1/Action.h
  /home/moran/Desktop/ass1/Customer.h
  /home/moran/Desktop/ass1/Dish.cpp
  /home/moran/Desktop/ass1/Dish.h
  /home/moran/Desktop/ass1/Restaurant.h
  /home/moran/Desktop/ass1/Table.h
+=======
+ /home/barper/CLionProjects/ass1/Action.h
+ /home/barper/CLionProjects/ass1/Customer.h
+ /home/barper/CLionProjects/ass1/Dish.cpp
+ /home/barper/CLionProjects/ass1/Dish.h
+ /home/barper/CLionProjects/ass1/Restaurant.h
+ /home/barper/CLionProjects/ass1/Table.h
+CMakeFiles/ass1.dir/MoveCustomer.cpp.o
+ /home/barper/CLionProjects/ass1/Action.h
+ /home/barper/CLionProjects/ass1/Customer.h
+ /home/barper/CLionProjects/ass1/Dish.h
+ /home/barper/CLionProjects/ass1/MoveCustomer.cpp
+ /home/barper/CLionProjects/ass1/Restaurant.h
+ /home/barper/CLionProjects/ass1/Table.h
+>>>>>>> 0d9c4f4f404b42f56fcc92247d5a0e3d450f6f55
 CMakeFiles/ass1.dir/OpenTable.cpp.o
  /home/moran/Desktop/ass1/Action.h
  /home/moran/Desktop/ass1/Customer.h
@@ -34,12 +50,28 @@ CMakeFiles/ass1.dir/OpenTable.cpp.o
  /home/moran/Desktop/ass1/Restaurant.h
  /home/moran/Desktop/ass1/Table.h
 CMakeFiles/ass1.dir/Order.cpp.o
+<<<<<<< HEAD
  /home/moran/Desktop/ass1/Action.h
  /home/moran/Desktop/ass1/Customer.h
  /home/moran/Desktop/ass1/Dish.h
  /home/moran/Desktop/ass1/Order.cpp
  /home/moran/Desktop/ass1/Restaurant.h
  /home/moran/Desktop/ass1/Table.h
+=======
+ /home/barper/CLionProjects/ass1/Action.h
+ /home/barper/CLionProjects/ass1/Customer.h
+ /home/barper/CLionProjects/ass1/Dish.h
+ /home/barper/CLionProjects/ass1/Order.cpp
+ /home/barper/CLionProjects/ass1/Restaurant.h
+ /home/barper/CLionProjects/ass1/Table.h
+CMakeFiles/ass1.dir/PrintActionsLog.cpp.o
+ /home/barper/CLionProjects/ass1/Action.h
+ /home/barper/CLionProjects/ass1/Customer.h
+ /home/barper/CLionProjects/ass1/Dish.h
+ /home/barper/CLionProjects/ass1/PrintActionsLog.cpp
+ /home/barper/CLionProjects/ass1/Restaurant.h
+ /home/barper/CLionProjects/ass1/Table.h
+>>>>>>> 0d9c4f4f404b42f56fcc92247d5a0e3d450f6f55
 CMakeFiles/ass1.dir/Restaurant.cpp.o
  /home/moran/Desktop/ass1/Action.h
  /home/moran/Desktop/ass1/Customer.h

@@ -231,6 +231,33 @@ Dish.cpp.s:
 	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/Dish.cpp.s
 .PHONY : Dish.cpp.s
 
+MoveCustomer.o: MoveCustomer.cpp.o
+
+.PHONY : MoveCustomer.o
+
+# target to build an object file
+MoveCustomer.cpp.o:
+	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/MoveCustomer.cpp.o
+.PHONY : MoveCustomer.cpp.o
+
+MoveCustomer.i: MoveCustomer.cpp.i
+
+.PHONY : MoveCustomer.i
+
+# target to preprocess a source file
+MoveCustomer.cpp.i:
+	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/MoveCustomer.cpp.i
+.PHONY : MoveCustomer.cpp.i
+
+MoveCustomer.s: MoveCustomer.cpp.s
+
+.PHONY : MoveCustomer.s
+
+# target to generate assembly for a file
+MoveCustomer.cpp.s:
+	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/MoveCustomer.cpp.s
+.PHONY : MoveCustomer.cpp.s
+
 OpenTable.o: OpenTable.cpp.o
 
 .PHONY : OpenTable.o
@@ -284,6 +311,33 @@ Order.s: Order.cpp.s
 Order.cpp.s:
 	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/Order.cpp.s
 .PHONY : Order.cpp.s
+
+PrintActionsLog.o: PrintActionsLog.cpp.o
+
+.PHONY : PrintActionsLog.o
+
+# target to build an object file
+PrintActionsLog.cpp.o:
+	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/PrintActionsLog.cpp.o
+.PHONY : PrintActionsLog.cpp.o
+
+PrintActionsLog.i: PrintActionsLog.cpp.i
+
+.PHONY : PrintActionsLog.i
+
+# target to preprocess a source file
+PrintActionsLog.cpp.i:
+	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/PrintActionsLog.cpp.i
+.PHONY : PrintActionsLog.cpp.i
+
+PrintActionsLog.s: PrintActionsLog.cpp.s
+
+.PHONY : PrintActionsLog.s
+
+# target to generate assembly for a file
+PrintActionsLog.cpp.s:
+	$(MAKE) -f CMakeFiles/ass1.dir/build.make CMakeFiles/ass1.dir/PrintActionsLog.cpp.s
+.PHONY : PrintActionsLog.cpp.s
 
 Restaurant.o: Restaurant.cpp.o
 
@@ -387,12 +441,18 @@ help:
 	@echo "... Dish.o"
 	@echo "... Dish.i"
 	@echo "... Dish.s"
+	@echo "... MoveCustomer.o"
+	@echo "... MoveCustomer.i"
+	@echo "... MoveCustomer.s"
 	@echo "... OpenTable.o"
 	@echo "... OpenTable.i"
 	@echo "... OpenTable.s"
 	@echo "... Order.o"
 	@echo "... Order.i"
 	@echo "... Order.s"
+	@echo "... PrintActionsLog.o"
+	@echo "... PrintActionsLog.i"
+	@echo "... PrintActionsLog.s"
 	@echo "... Restaurant.o"
 	@echo "... Restaurant.i"
 	@echo "... Restaurant.s"

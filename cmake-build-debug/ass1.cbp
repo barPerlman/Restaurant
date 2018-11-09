@@ -105,13 +105,27 @@
 		<Unit filename="/home/moran/Desktop/ass1/Dish.h">
 			<Option target="ass1"/>
 		</Unit>
+<<<<<<< HEAD
 		<Unit filename="/home/moran/Desktop/ass1/OpenTable.cpp">
+=======
+		<Unit filename="/home/barper/CLionProjects/ass1/MoveCustomer.cpp">
+			<Option target="ass1"/>
+		</Unit>
+		<Unit filename="/home/barper/CLionProjects/ass1/OpenTable.cpp">
+>>>>>>> 0d9c4f4f404b42f56fcc92247d5a0e3d450f6f55
 			<Option target="ass1"/>
 		</Unit>
 		<Unit filename="/home/moran/Desktop/ass1/Order.cpp">
 			<Option target="ass1"/>
 		</Unit>
+<<<<<<< HEAD
 		<Unit filename="/home/moran/Desktop/ass1/Restaurant.cpp">
+=======
+		<Unit filename="/home/barper/CLionProjects/ass1/PrintActionsLog.cpp">
+			<Option target="ass1"/>
+		</Unit>
+		<Unit filename="/home/barper/CLionProjects/ass1/Restaurant.cpp">
+>>>>>>> 0d9c4f4f404b42f56fcc92247d5a0e3d450f6f55
 			<Option target="ass1"/>
 		</Unit>
 		<Unit filename="/home/moran/Desktop/ass1/Restaurant.h">

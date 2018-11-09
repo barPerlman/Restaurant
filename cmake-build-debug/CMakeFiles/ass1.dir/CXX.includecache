@@ -14,7 +14,33 @@ vector
 string
 -
 
+<<<<<<< HEAD
 /home/moran/Desktop/ass1/Customer.h
+=======
+/home/barper/CLionProjects/ass1/Dish.h
+string
+-
+
+/home/barper/CLionProjects/ass1/PrintActionsLog.cpp
+Action.h
+/home/barper/CLionProjects/ass1/Action.h
+Restaurant.h
+/home/barper/CLionProjects/ass1/Restaurant.h
+iostream
+-
+Dish.h
+/home/barper/CLionProjects/ass1/Dish.h
+Customer.h
+/home/barper/CLionProjects/ass1/Customer.h
+string
+-
+fstream
+-
+vector
+-
+
+/home/barper/CLionProjects/ass1/Restaurant.h
+>>>>>>> 0d9c4f4f404b42f56fcc92247d5a0e3d450f6f55
 vector
 -
 string

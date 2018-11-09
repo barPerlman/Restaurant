@@ -23,7 +23,6 @@ public:
     void closeTable();
     int getBill();
     bool isOpen();
-    void removeCurrCustomerOrders(const int &id);
 private:
     void clear();
     int capacity;
