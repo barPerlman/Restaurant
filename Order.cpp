@@ -12,5 +12,26 @@
 using namespace std;
 
 Order::Order(int id):BaseAction(),tableId(id){}
-void Order::act(Restaurant &restaurant){}
-std::string Order::toString() const{}
+
+void Order::act(Restaurant &restaurant){
+    //check that table with such id is exist and open
+    if(tableId>=0&&tableId<restaurant.getNumOfTables() && restaurant.getTable(tableId)->isOpen()) {
+        restaurant.getTable(tableId)->order(restaurant.getMenu());
+    }
+    else{
+        //check if should i print it to screen
+        std::cout<<"Table does not exist or is not open"<<std::endl;
+        error("Table does not exist or is not open");
+    }
+}
+//create an order output string for log
+std::string Order::toString() const{
+    string orderStr="";
+    if(getStatus()==COMPLETED){
+        orderStr+="order "+to_string(tableId)+" Completed";
+    }
+    else{
+        orderStr+=getErrorMsg();
+    }
+    return orderStr;
+}

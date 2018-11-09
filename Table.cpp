@@ -77,13 +77,31 @@ std::vector<OrderPair>& Table::getOrders(){
     vector<OrderPair>& orderRef=orderList;
     return orderRef;
 }
-///////////define after understanding what is it????
+
+//this function takes orders from the table customers
 void Table::order(const std::vector<Dish> &menu){
-    std::cout<<"Orders:"<<std::endl;
-    for(int i=0;i<menu.size();i++){
-        std::cout<<menu.at(i).toString()<<std::endl;
+    //allocate a vector for the current customers orders
+    vector<OrderPair> currOrdersById;   //vector of orders with first value that holds the customer id for concate with old orders list
+    vector<CurrOrderPair> currOrdersByName;     //vector of orders with first value that holds the customer name for print
+    for(Customer *&c:customersList){
+        //get current customer orders vector by id
+        vector <int> customerOrders=c->order(menu);
+        //push customer orders into current orders from table vector
+        for(int dishId:customerOrders){
+            currOrdersById.push_back(OrderPair(c->getId(),(menu.at(dishId))));
+            currOrdersByName.push_back(CurrOrderPair(c->getName(),menu.at(dishId)));
+        }
+    }
+    //update the orders list with the last made orders
+    for(OrderPair lastOrder:currOrdersById){
+        orderList.push_back(lastOrder);
+    }
+    //print the last orders made in the table
+    for(CurrOrderPair lastOrder:currOrdersByName){
+        std::cout<<lastOrder.first+" ordered "+lastOrder.second.getName()<<std::endl;
     }
 }
+
 //open table by change its status
 void Table::openTable(){
     open=true;

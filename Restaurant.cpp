@@ -123,15 +123,20 @@ void Restaurant::start() {
 
         //the command cases:
         if(firstWord=="open"){
-
+            //remove the part which is not relevant anymore of the sentence
             string delimeter=" ";
             size_t pos=exeCommand.find(delimeter);
             string tableIdStr=exeCommand.substr(0, pos);    //split
             exeCommand.erase(0, pos + delimeter.length());
-            openTable(exeCommand);
+            openTable(exeCommand);  //call for a function to start the openTable process with command string
         }
         else if(firstWord=="order"){
-            orderFromTable(exeCommand);
+            //remove the part which is not relevant anymore of the sentence
+            string delimeter=" ";
+            size_t pos=exeCommand.find(delimeter);
+            string tableIdStr=exeCommand.substr(0, pos);    //split
+            exeCommand.erase(0, pos + delimeter.length());
+            orderFromTable(exeCommand); //call for a function to start the order process with command string
         }
         else if(firstWord=="move"){
             moveCustomer(exeCommand);
@@ -157,12 +162,6 @@ void Restaurant::start() {
         else if(firstWord=="restore"){
             restoreRestaurant();
         }
-        string s;
-        if(open){
-            s="open";}
-        else{
-            s="closed";}
-        std::cout<<"rest is " +s<<std::endl;
     }while(exeCommand!="closeall");
 }
 
@@ -332,7 +331,9 @@ void Restaurant::openTable(string &exeCommand){
 
 }
 void Restaurant::orderFromTable(string &exeCommand){
-    std::cout<<exeCommand<<std::endl;
+    BaseAction *order_from_table=new Order(stoi(exeCommand));
+    actionsLog.push_back(order_from_table);
+    order_from_table->act(*this);
 }
 
 

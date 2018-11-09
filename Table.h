@@ -6,6 +6,7 @@
 #include "Dish.h"
 
 typedef std::pair<int, Dish> OrderPair;
+typedef std::pair<std::string, Dish> CurrOrderPair;     //define new vector of pairs for orders string
 
 class Table{
 public:
