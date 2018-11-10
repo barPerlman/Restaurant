@@ -105,6 +105,7 @@ public:
     std::string toString() const;
 private:
     const int tableId;
+    int nameToPrice(std::string name, Restaurant &restaurant); // returns the price of the dish
 };
 
 

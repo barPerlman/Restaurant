@@ -139,3 +139,10 @@ void Table::clear(){
         customer= nullptr;
     }
 }
+
+//copy constructor
+Table::Table(const Table &other):
+        capacity(other.getCapacity()),
+        open(other.open),
+        customersList(other.customersList),
+        orderList(other.orderList){}

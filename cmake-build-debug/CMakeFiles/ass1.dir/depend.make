@@ -19,12 +19,6 @@ CMakeFiles/ass1.dir/Customer.cpp.o: ../Customer.cpp
 CMakeFiles/ass1.dir/Customer.cpp.o: ../Customer.h
 CMakeFiles/ass1.dir/Customer.cpp.o: ../Dish.h
 
-CMakeFiles/ass1.dir/Dish.cpp.o: ../Action.h
-CMakeFiles/ass1.dir/Dish.cpp.o: ../Customer.h
-CMakeFiles/ass1.dir/Dish.cpp.o: ../Dish.cpp
-CMakeFiles/ass1.dir/Dish.cpp.o: ../Dish.h
-CMakeFiles/ass1.dir/Dish.cpp.o: ../Restaurant.h
-CMakeFiles/ass1.dir/Dish.cpp.o: ../Table.h
 
 CMakeFiles/ass1.dir/MoveCustomer.cpp.o: ../Action.h
 CMakeFiles/ass1.dir/MoveCustomer.cpp.o: ../Customer.h
@@ -40,12 +34,6 @@ CMakeFiles/ass1.dir/OpenTable.cpp.o: ../OpenTable.cpp
 CMakeFiles/ass1.dir/OpenTable.cpp.o: ../Restaurant.h
 CMakeFiles/ass1.dir/OpenTable.cpp.o: ../Table.h
 
-CMakeFiles/ass1.dir/Order.cpp.o: ../Action.h
-CMakeFiles/ass1.dir/Order.cpp.o: ../Customer.h
-CMakeFiles/ass1.dir/Order.cpp.o: ../Dish.h
-CMakeFiles/ass1.dir/Order.cpp.o: ../Order.cpp
-CMakeFiles/ass1.dir/Order.cpp.o: ../Restaurant.h
-CMakeFiles/ass1.dir/Order.cpp.o: ../Table.h
 
 CMakeFiles/ass1.dir/PrintActionsLog.cpp.o: ../Action.h
 CMakeFiles/ass1.dir/PrintActionsLog.cpp.o: ../Customer.h

@@ -165,12 +165,12 @@ void Restaurant::start() {
         else if(firstWord=="log"){
             printActionsLog();
         }
-        else if(firstWord=="backup"){
-            backupRestaurant();
-        }
-        else if(firstWord=="restore"){
-            restoreRestaurant();
-        }
+//        else if(firstWord=="backup"){
+ //           backupRestaurant();
+//        }
+//        else if(firstWord=="restore"){
+//            restoreRestaurant();
+//        }
     }while(exeCommand!="closeall");
 }
 
@@ -180,7 +180,7 @@ int Restaurant::getNumOfTables() const{
 }
 //return the table in the required index or nullptr if doesn't exist
 Table* Restaurant::getTable(int ind){
-    if(ind<getNumOfTables()) {
+    if(ind>=0 && ind<getNumOfTables()) {
         Table *&requiredTable = tables.at(ind);
         return requiredTable;
     }
@@ -215,6 +215,7 @@ void Restaurant::clear() {
 }
 //copy constructor
 Restaurant::Restaurant(const Restaurant &other):
+open(other.open),
 tables(other.tables),
 menu(other.menu),
 actionsLog(other.actionsLog){}

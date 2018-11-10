@@ -23,12 +23,14 @@ public:
     void closeTable();
     int getBill();
     bool isOpen();
+
 private:
     void clear();
     int capacity;
     bool open;
     std::vector<Customer*> customersList;
     std::vector<OrderPair> orderList; //A list of pairs for each order in a table - (customer_id, Dish)
+    Table(const Table &other);// copy constructor
 };
 
 

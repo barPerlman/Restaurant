@@ -7,6 +7,7 @@
 #include <fstream>
 #include <vector>
 using namespace std;
+extern Restaurant* backup;
 /**
 /**
 * A Close action is the class that closes a table.
@@ -113,25 +114,88 @@ PrintTableStatus::PrintTableStatus(int ind):BaseAction(),tableId(ind){}
 // close a table in the restaurant with tableId
 void PrintTableStatus::act(Restaurant &restaurant) {
     if(!(restaurant.getTable(tableId)->isOpen()))// if the table is close
-        std::cout<<"Table "<< std::to_string(tableId)<< " status:"
-                 <<std::to_string(restaurant.getTable(tableId)->isOpen())<<std::endl;// prints the status of the table
+        std::cout<<"Table "<< std::to_string(tableId)<< " status: close"<<std::endl;// prints the status of the table
 
     else{// if the table is open
-        std::string str = "Table "+ std::to_string(tableId)+ " status:";
-        if(restaurant.getTable(tableId)->isOpen())
-            str+="open";
-        else str+="close";
-        std::cout<<str<<std::endl; // prints the status of the table
+        std::cout<<"Table "<< std::to_string(tableId)<< " status: open"<<std::endl;// prints the status of the table
         std::cout<<"Customers:"<<std::endl;
-        int j=0;
-        // prints the id of the customer and the name of the dish that he ordered
-        for(size_t i=0; i<restaurant.getTable(tableId)->getOrders().size();i++){
-            std::string str = std::to_string(restaurant.getTable(tableId)->getOrders()[j].first)+
-                              restaurant.getTable(tableId)->getOrders()[j].second.getName();
-        }
+        // prints the id and the name of the customers in the table
+        for(Customer* customer: restaurant.getTable(tableId)->getCustomers())
+            std::cout<<std::to_string(customer->getId())+" "+customer->getName()<<std::endl;
+        std::cout<<"Orders:"<<std::endl;
+        // prints the name of the dish, the price of the dish and the id of each customer in the table
+        for(OrderPair orderPair : restaurant.getTable(tableId)->getOrders())
+            std::cout<<orderPair.second.getName()<<" "<<std::to_string(nameToPrice(orderPair.second.getName(),restaurant))<<"NIS "<<
+                to_string(orderPair.first)<<std::endl;
+        std::cout<<"Current bill: "<< std::to_string(restaurant.getTable(tableId)->getBill())<<"NIS"<<std::endl;
     }
+}
+
+// returns the price of the dish
+int PrintTableStatus::nameToPrice(std::string name, Restaurant &restaurant) {
+    for(Dish dish : restaurant.getMenu())
+        if(dish.getName().compare(name)==0)
+            return dish.getPrice();
 }
 
 std::string PrintTableStatus::toString() const {
     return "Print table "+std::to_string(tableId)+ " status Completed";
 }
+
+
+/**
+* A BackupRestaurant action is the class that saves all the restaurant information
+ */
+
+/*******************************************************
+* BackupRestaurant Implementation
+*******************************************************/
+
+//Constructor
+BackupRestaurant::BackupRestaurant():BaseAction(){}
+
+// saves all the restaurant information
+void BackupRestaurant::act(Restaurant &restaurant) {
+    if(backup== nullptr) // if is the first time of the backup
+        backup=new Restaurant(restaurant);//use the copy constructor
+    else *backup=restaurant; //copy assignment
+    this->complete();
+}
+
+std::string BackupRestaurant::toString() const {
+    return "Backup restaurant completed";
+}
+
+
+/**
+* A RestoreResturant action is the class that saves all the restaurant information
+ */
+
+/*******************************************************
+* RestoreResturant Implementation
+*******************************************************/
+
+//Constructor
+RestoreResturant::RestoreResturant():BaseAction(){}
+
+// saves all the restaurant information
+void RestoreResturant::act(Restaurant &restaurant) {
+    if(backup== nullptr){
+        error("No backup available");
+    }
+    else{
+        restaurant=*backup;
+    }
+}
+
+std::string RestoreResturant::toString() const {
+    string closeStr="Restore restaurant ";// holds the message to print
+    if(getStatus()==COMPLETED) {// command completed successfully
+        closeStr +="completed";
+    }
+    else{// didn't complete successfully
+        closeStr+="failed";
+    }
+    return closeStr;
+}
+
