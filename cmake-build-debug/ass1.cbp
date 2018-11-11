@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/moran/Desktop/ass1/cmake-build-debug"/>
+				<Option working_dir="/home/barper/CLionProjects/ass1/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/moran/Desktop/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/moran/Desktop/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/moran/Desktop/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/moran/Desktop/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/barper/CLionProjects/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/barper/CLionProjects/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/barper/CLionProjects/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/barper/CLionProjects/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/moran/Desktop/ass1/cmake-build-debug"/>
+				<Option working_dir="/home/barper/CLionProjects/ass1/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/moran/Desktop/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/moran/Desktop/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/moran/Desktop/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/moran/Desktop/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/barper/CLionProjects/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/barper/CLionProjects/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/barper/CLionProjects/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/barper/CLionProjects/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/moran/Desktop/ass1/cmake-build-debug"/>
+				<Option working_dir="/home/barper/CLionProjects/ass1/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/moran/Desktop/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/moran/Desktop/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/moran/Desktop/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/moran/Desktop/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/barper/CLionProjects/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/barper/CLionProjects/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/barper/CLionProjects/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/barper/CLionProjects/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="ass1">
-				<Option output="/home/moran/Desktop/ass1/cmake-build-debug/ass1" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/moran/Desktop/ass1/cmake-build-debug"/>
+				<Option output="/home/barper/CLionProjects/ass1/cmake-build-debug/ass1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/barper/CLionProjects/ass1/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -54,15 +54,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/moran/Desktop/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 ass1"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/moran/Desktop/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/moran/Desktop/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/moran/Desktop/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/barper/CLionProjects/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 ass1"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/barper/CLionProjects/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/barper/CLionProjects/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/barper/CLionProjects/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="ass1/fast">
-				<Option output="/home/moran/Desktop/ass1/cmake-build-debug/ass1" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/moran/Desktop/ass1/cmake-build-debug"/>
+				<Option output="/home/barper/CLionProjects/ass1/cmake-build-debug/ass1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/barper/CLionProjects/ass1/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -77,62 +77,62 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/moran/Desktop/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 ass1/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/moran/Desktop/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/moran/Desktop/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/moran/Desktop/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/barper/CLionProjects/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 ass1/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/barper/CLionProjects/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/barper/CLionProjects/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/barper/CLionProjects/ass1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/moran/Desktop/ass1/Action.cpp">
+		<Unit filename="/home/barper/CLionProjects/ass1/Action.cpp">
 			<Option target="ass1"/>
 		</Unit>
-		<Unit filename="/home/moran/Desktop/ass1/Action.h">
+		<Unit filename="/home/barper/CLionProjects/ass1/Action.h">
 			<Option target="ass1"/>
 		</Unit>
-		<Unit filename="/home/moran/Desktop/ass1/BaseAction.cpp">
+		<Unit filename="/home/barper/CLionProjects/ass1/BaseAction.cpp">
 			<Option target="ass1"/>
 		</Unit>
-		<Unit filename="/home/moran/Desktop/ass1/Customer.cpp">
+		<Unit filename="/home/barper/CLionProjects/ass1/Customer.cpp">
 			<Option target="ass1"/>
 		</Unit>
-		<Unit filename="/home/moran/Desktop/ass1/Customer.h">
+		<Unit filename="/home/barper/CLionProjects/ass1/Customer.h">
 			<Option target="ass1"/>
 		</Unit>
-		<Unit filename="/home/moran/Desktop/ass1/Dish.cpp">
+		<Unit filename="/home/barper/CLionProjects/ass1/Dish.cpp">
 			<Option target="ass1"/>
 		</Unit>
-		<Unit filename="/home/moran/Desktop/ass1/Dish.h">
+		<Unit filename="/home/barper/CLionProjects/ass1/Dish.h">
 			<Option target="ass1"/>
 		</Unit>
-		<Unit filename="/home/moran/Desktop/ass1/MoveCustomer.cpp">
+		<Unit filename="/home/barper/CLionProjects/ass1/MoveCustomer.cpp">
 			<Option target="ass1"/>
 		</Unit>
-		<Unit filename="/home/moran/Desktop/ass1/OpenTable.cpp">
+		<Unit filename="/home/barper/CLionProjects/ass1/OpenTable.cpp">
 			<Option target="ass1"/>
 		</Unit>
-		<Unit filename="/home/moran/Desktop/ass1/Order.cpp">
+		<Unit filename="/home/barper/CLionProjects/ass1/Order.cpp">
 			<Option target="ass1"/>
 		</Unit>
-		<Unit filename="/home/moran/Desktop/ass1/PrintActionsLog.cpp">
+		<Unit filename="/home/barper/CLionProjects/ass1/PrintActionsLog.cpp">
 			<Option target="ass1"/>
 		</Unit>
-		<Unit filename="/home/moran/Desktop/ass1/Restaurant.cpp">
+		<Unit filename="/home/barper/CLionProjects/ass1/Restaurant.cpp">
 			<Option target="ass1"/>
 		</Unit>
-		<Unit filename="/home/moran/Desktop/ass1/Restaurant.h">
+		<Unit filename="/home/barper/CLionProjects/ass1/Restaurant.h">
 			<Option target="ass1"/>
 		</Unit>
-		<Unit filename="/home/moran/Desktop/ass1/Table.cpp">
+		<Unit filename="/home/barper/CLionProjects/ass1/Table.cpp">
 			<Option target="ass1"/>
 		</Unit>
-		<Unit filename="/home/moran/Desktop/ass1/Table.h">
+		<Unit filename="/home/barper/CLionProjects/ass1/Table.h">
 			<Option target="ass1"/>
 		</Unit>
-		<Unit filename="/home/moran/Desktop/ass1/main.cpp">
+		<Unit filename="/home/barper/CLionProjects/ass1/main.cpp">
 			<Option target="ass1"/>
 		</Unit>
-		<Unit filename="/home/moran/Desktop/ass1/CMakeLists.txt">
+		<Unit filename="/home/barper/CLionProjects/ass1/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

@@ -127,7 +127,7 @@ void PrintTableStatus::act(Restaurant &restaurant) {
         for(OrderPair orderPair : restaurant.getTable(tableId)->getOrders())
             std::cout<<orderPair.second.getName()<<" "<<std::to_string(nameToPrice(orderPair.second.getName(),restaurant))<<"NIS "<<
                 to_string(orderPair.first)<<std::endl;
-        std::cout<<"Current bill: "<< std::to_string(restaurant.getTable(tableId)->getBill())<<"NIS"<<std::endl;
+        std::cout<<"Current Bill: "<< std::to_string(restaurant.getTable(tableId)->getBill())<<"NIS"<<std::endl;
     }
 }
 
@@ -139,7 +139,7 @@ int PrintTableStatus::nameToPrice(std::string name, Restaurant &restaurant) {
 }
 
 std::string PrintTableStatus::toString() const {
-    return "Print table "+std::to_string(tableId)+ " status Completed";
+    return "status "+std::to_string(tableId)+ " Completed";
 }
 
 
@@ -158,12 +158,14 @@ BackupRestaurant::BackupRestaurant():BaseAction(){}
 void BackupRestaurant::act(Restaurant &restaurant) {
     if(backup== nullptr) // if is the first time of the backup
         backup=new Restaurant(restaurant);//use the copy constructor
-    else *backup=restaurant; //copy assignment
-    this->complete();
+    else {
+        *backup = restaurant; //copy assignment
+    }
+    complete();
 }
 
 std::string BackupRestaurant::toString() const {
-    return "Backup restaurant completed";
+    return "Backup Completed";
 }
 
 
@@ -185,6 +187,7 @@ void RestoreResturant::act(Restaurant &restaurant) {
     }
     else{
         restaurant=*backup;
+        complete();
     }
 }
 

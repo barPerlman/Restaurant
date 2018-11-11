@@ -7,7 +7,11 @@
 
 class Customer{
 public:
-    Customer(std::string c_name, int c_id);
+
+	virtual std::string findType()=0;	//return customer type
+	Customer(const Customer &other);
+
+	Customer(std::string c_name, int c_id);
     virtual std::vector<int> order(const std::vector<Dish> &menu)=0;
     virtual std::string toString() const = 0;
     std::string getName() const;
@@ -22,6 +26,7 @@ private:
 
 class VegetarianCustomer : public Customer {
 public:
+	std::string findType();
 	VegetarianCustomer(std::string name, int id);
     std::vector<int> order(const std::vector<Dish> &menu);
     std::string toString() const;
@@ -31,6 +36,8 @@ private:
 
 class CheapCustomer : public Customer {
 public:
+	std::string findType();
+
 	CheapCustomer(std::string name, int id);
     std::vector<int> order(const std::vector<Dish> &menu);
     std::string toString() const;
@@ -41,6 +48,8 @@ private:
 
 class SpicyCustomer : public Customer {
 public:
+	std::string findType();
+
 	SpicyCustomer(std::string name, int id);
     std::vector<int> order(const std::vector<Dish> &menu);
     std::string toString() const;
@@ -51,6 +60,8 @@ private:
 
 class AlchoholicCustomer : public Customer {
 public:
+	std::string findType();
+
 	AlchoholicCustomer(std::string name, int id);
     std::vector<int> order(const std::vector<Dish> &menu);
     std::string toString() const;

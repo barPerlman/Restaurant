@@ -10,7 +10,8 @@ typedef std::pair<std::string, Dish> CurrOrderPair;     //define new vector of p
 
 class Table{
 public:
-    virtual ~Table(); //destructor
+    void buildCustomersPointersVector(std::string CustomerName,int customerId,std::string CustomerType,std::vector<Customer*> &customersList);
+        virtual ~Table(); //destructor
     Table(int t_capacity);
     int getCapacity() const;
     void addCustomer(Customer* customer);
@@ -23,6 +24,9 @@ public:
     void closeTable();
     int getBill();
     bool isOpen();
+    Table(const Table &other);// copy constructor
+    Table& operator=(const Table &other);
+    Table& operator=(Table &&other);
 
 private:
     void clear();
@@ -30,7 +34,7 @@ private:
     bool open;
     std::vector<Customer*> customersList;
     std::vector<OrderPair> orderList; //A list of pairs for each order in a table - (customer_id, Dish)
-    Table(const Table &other);// copy constructor
+
 };
 
 

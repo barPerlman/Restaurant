@@ -37,6 +37,11 @@ std::string Customer::castDishType(DishType dishType) {
 // Destructor
 Customer::~Customer() {}
 
+
+
+//copy constructor
+Customer::Customer(const Customer &other):name(other.name),id(other.id){}
+
 /**
 * A VegetarianCustomer is one type of a Customer in the restaurant.
 * This type of customer always orders the vegetarian dish with the
@@ -236,14 +241,22 @@ std::string AlchoholicCustomer:: toString() const {
 }
 
 
+std::string VegetarianCustomer::findType() {
+    return ("veg");
+}
+
+std::string CheapCustomer::findType() {
+    return ("chp");
+}
 
 
+std::string AlchoholicCustomer::findType() {
+    return ("alc");
+}
 
-
-
-
-
-
+std::string SpicyCustomer::findType() {
+    return ("spc");
+}
 
 
 

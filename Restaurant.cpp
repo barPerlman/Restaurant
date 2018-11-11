@@ -1,9 +1,8 @@
-#include "Restaurant.h"
-#include "Table.h"//
-// Created by barper on 11/3/18.
 // The following classes are implemented in this file:
 //Restaurant,Table,Dish
 //
+#include "Restaurant.h"
+#include "Table.h"
 #include "Restaurant.h"
 #include <iostream>
 #include "Dish.h"
@@ -17,10 +16,10 @@ using namespace std;
 
 /////////////////////////Restaurant Class functions/////////////////////////////////////
 //default empty constructor
-Restaurant::Restaurant(){}
+Restaurant::Restaurant():lastId(0),open(false){}
 
 //constructor
-Restaurant::Restaurant(const std::string &configFilePath):open(false) {
+Restaurant::Restaurant(const std::string &configFilePath):lastId(0),open(false) {
     std::ifstream file(configFilePath);//open file to read
     string readLine; //holds the current read line from the file
     do{
@@ -165,12 +164,12 @@ void Restaurant::start() {
         else if(firstWord=="log"){
             printActionsLog();
         }
-//        else if(firstWord=="backup"){
- //           backupRestaurant();
-//        }
-//        else if(firstWord=="restore"){
-//            restoreRestaurant();
-//        }
+        else if(firstWord=="backup"){
+            backupRestaurant();
+        }
+        else if(firstWord=="restore"){
+            restoreRestaurant();
+        }
     }while(exeCommand!="closeall");
 }
 
@@ -204,33 +203,41 @@ Restaurant::~Restaurant() {
 void Restaurant::clear() {
     //remove tables vector
     for(Table *table:tables){
-        delete[] table;
+        delete table;
         table= nullptr;
     }
+    tables.clear();
     //remove base actions log
     for(BaseAction *baseAction:actionsLog){
-        delete [] baseAction;
+        delete baseAction;
         baseAction= nullptr;
     }
+    actionsLog.clear();
+    menu.clear();
 }
 //copy constructor
 Restaurant::Restaurant(const Restaurant &other):
+lastId(other.lastId),
 open(other.open),
-tables(other.tables),
-menu(other.menu),
-actionsLog(other.actionsLog){}
+menu(other.menu),actionsLog(other.actionsLog)
+{
+    for(Table* t:other.tables){
+        tables.push_back(new Table(*(t)));
+    }
+
+}
 
 //move constructor
-Restaurant::Restaurant(Restaurant &&other):tables(other.tables),menu(other.menu),actionsLog(other.actionsLog) {
+Restaurant::Restaurant(Restaurant &&other):lastId(other.lastId),tables(other.tables),menu(other.menu),actionsLog(other.actionsLog) {
     //assign nullptr in vectors values:
     //for tables:
     for (Table *table:other.tables) {
-        delete[] table;
+        delete (table);
         table = nullptr;
     }
     //for actions log:
     for(BaseAction *action:other.actionsLog){
-        delete[] action;
+        delete action;
         action= nullptr;
     }
 
@@ -240,8 +247,12 @@ Restaurant::Restaurant(Restaurant &&other):tables(other.tables),menu(other.menu)
 Restaurant& Restaurant::operator=(const Restaurant &other) {
     if(this!=&other){
         clear();
-        tables=other.tables;
-
+        lastId=other.lastId;
+        open=other.open;
+        //tables=other.tables;
+        for(Table* t:other.tables){
+            tables.push_back(new Table(*t));
+        }
         //assignment of menu
         menu.clear();
         for(Dish d:other.menu){
@@ -256,7 +267,11 @@ Restaurant& Restaurant::operator=(const Restaurant &other) {
 Restaurant& Restaurant::operator=(Restaurant &&other) {
     if(this!=&other){
         clear();
-        tables=other.tables;
+       // tables=other.tables;
+
+        for(int i=0;i<other.tables.size();i++){
+            *tables.at(i)=*other.tables.at(i);
+        }
 
         //assignment of menu
         menu.clear();
@@ -267,12 +282,12 @@ Restaurant& Restaurant::operator=(Restaurant &&other) {
         //assign nullptr in vectors values:
         //for tables:
         for (Table *table:other.tables) {
-            delete[] table;
+            delete (table);
             table = nullptr;
         }
         //for actions log:
         for(BaseAction *action:other.actionsLog){
-            delete[] action;
+            delete (action);
             action= nullptr;
         }
     }
@@ -299,7 +314,7 @@ void Restaurant::openTable(string &exeCommand){
         //3.push pointer to instance into vector of pointer
         //send vector of customers and table id to open table constructor
         vector <Customer*> customersList;
-        int customerId=0;
+        int customerId=lastId;
         size_t posPair;
         while((pos=command.find(delimeter))!=std::string::npos){
 
@@ -329,7 +344,8 @@ void Restaurant::openTable(string &exeCommand){
         CustomerType=pairNameType.substr(0,pos);    //read type
         //create a customer and push into vector
         buildCustomersPointersVector(CustomerName,customerId,CustomerType,customersList);
-
+        //save the last id for next customer
+        lastId=customerId+1;
         //create instance of the action open table and save it to log
         BaseAction *open_table=new OpenTable(stoi(tableIdStr),customersList);
         actionsLog.push_back(open_table);   //push action to action log
@@ -351,13 +367,6 @@ void Restaurant::moveCustomer(string &exeCommand){
     int originTable,destTable,customerId;   //those are the initialize fields for the move constructor
     size_t pos;
 
-    //read and split as long as we are not in the end of the line
-  //  while ((pos = exeCommand.find(" ")) != std::string::npos) {
-   //     token = readLine.substr(0, pos);    //split
-   //     //push capacity into vector
-   //     tablesDescription.push_back(stoi(token));
-    //    readLine.erase(0, pos + delimiter.length());
-    //}
 
     pos=exeCommand.find(" ");   //position of end character of current splitted part
     originTable=stoi(exeCommand.substr(0,pos));  //get the origin table from command and convert to int

@@ -27,14 +27,14 @@ tableId(other.tableId){}
 //move constructor
 OpenTable::OpenTable(OpenTable &&other):customers(customers),tableId(tableId){
     for(Customer* c:other.customers){
-        delete[] c;
+        delete (c);
         c= nullptr;
     }
 }
 
 void OpenTable::clear(){
     for(Customer *customer:customers){
-        delete[] customer;
+        delete (customer);
         customer= nullptr;
     }
 }
