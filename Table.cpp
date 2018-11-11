@@ -22,7 +22,7 @@ int Table::getCapacity() const{
 //add a customer to the table as last element in vector
 void Table::addCustomer(Customer* customer){
     //it's possible to add a customer to the table
-    if(customersList.size()<capacity&&!open){
+    if(customersList.size()<capacity){
         customersList.push_back(customer);//add customer to table at end of list
     } else{
         std::cout<<"Cannot add a Customer to the table. it's open or full!"<<std::endl;
@@ -135,7 +135,7 @@ Table::~Table() {
 //clear sources out of the customers vector
 void Table::clear(){
     for(Customer *customer:customersList){
-        delete[] customer;
+        delete customer;
         customer= nullptr;
     }
 }

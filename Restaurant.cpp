@@ -16,11 +16,12 @@
 using namespace std;
 
 /////////////////////////Restaurant Class functions/////////////////////////////////////
+/////////////////////////Restaurant Class functions/////////////////////////////////////
 //default empty constructor
-Restaurant::Restaurant(){}
+Restaurant::Restaurant():lastId(0),open(false){}
 
 //constructor
-Restaurant::Restaurant(const std::string &configFilePath):open(false) {
+Restaurant::Restaurant(const std::string &configFilePath):lastId(0),open(false) {
     std::ifstream file(configFilePath);//open file to read
     string readLine; //holds the current read line from the file
     do{
@@ -165,12 +166,12 @@ void Restaurant::start() {
         else if(firstWord=="log"){
             printActionsLog();
         }
-//        else if(firstWord=="backup"){
- //           backupRestaurant();
-//        }
-//        else if(firstWord=="restore"){
-//            restoreRestaurant();
-//        }
+        else if(firstWord=="backup"){
+            backupRestaurant();
+        }
+        else if(firstWord=="restore"){
+            restoreRestaurant();
+        }
     }while(exeCommand!="closeall");
 }
 
@@ -204,12 +205,12 @@ Restaurant::~Restaurant() {
 void Restaurant::clear() {
     //remove tables vector
     for(Table *table:tables){
-        delete[] table;
+        delete table;
         table= nullptr;
     }
     //remove base actions log
     for(BaseAction *baseAction:actionsLog){
-        delete [] baseAction;
+        delete  baseAction;
         baseAction= nullptr;
     }
 }
@@ -225,12 +226,12 @@ Restaurant::Restaurant(Restaurant &&other):tables(other.tables),menu(other.menu)
     //assign nullptr in vectors values:
     //for tables:
     for (Table *table:other.tables) {
-        delete[] table;
+        delete table;
         table = nullptr;
     }
     //for actions log:
     for(BaseAction *action:other.actionsLog){
-        delete[] action;
+        delete action;
         action= nullptr;
     }
 
@@ -267,12 +268,12 @@ Restaurant& Restaurant::operator=(Restaurant &&other) {
         //assign nullptr in vectors values:
         //for tables:
         for (Table *table:other.tables) {
-            delete[] table;
+            delete table;
             table = nullptr;
         }
         //for actions log:
         for(BaseAction *action:other.actionsLog){
-            delete[] action;
+            delete action;
             action= nullptr;
         }
     }
@@ -299,8 +300,7 @@ void Restaurant::openTable(string &exeCommand){
         //3.push pointer to instance into vector of pointer
         //send vector of customers and table id to open table constructor
         vector <Customer*> customersList;
-        int customerId=0;
-        size_t posPair;
+        int customerId=lastId;
         while((pos=command.find(delimeter))!=std::string::npos){
 
             pairNameType = command.substr(0, pos);    //get name with type
@@ -329,7 +329,8 @@ void Restaurant::openTable(string &exeCommand){
         CustomerType=pairNameType.substr(0,pos);    //read type
         //create a customer and push into vector
         buildCustomersPointersVector(CustomerName,customerId,CustomerType,customersList);
-
+        //save the last id for next customer
+        lastId=customerId+1;
         //create instance of the action open table and save it to log
         BaseAction *open_table=new OpenTable(stoi(tableIdStr),customersList);
         actionsLog.push_back(open_table);   //push action to action log
