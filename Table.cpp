@@ -22,7 +22,7 @@ int Table::getCapacity() const{
 //add a customer to the table as last element in vector
 void Table::addCustomer(Customer* customer){
     //it's possible to add a customer to the table
-    if(customersList.size()<capacity){
+    if(customersList.size()<capacity&&!open){
         customersList.push_back(customer);//add customer to table at end of list
     } else{
         std::cout<<"Cannot add a Customer to the table. it's open or full!"<<std::endl;
@@ -135,11 +135,9 @@ Table::~Table() {
 //clear sources out of the customers vector
 void Table::clear(){
     for(Customer *customer:customersList){
-        delete customer;
+        delete[] customer;
         customer= nullptr;
     }
-    customersList.clear();
-    orderList.clear();
 }
 
 //copy constructor
@@ -148,68 +146,3 @@ Table::Table(const Table &other):
         open(other.open),
         customersList(other.customersList),
         orderList(other.orderList){}
-
-//copy assignment
-Table& Table::operator=(const Table &other) {
-    if(this!=&other){
-        clear();
-        capacity=other.capacity;
-        open=other.open;
-        //customersList=other.customersList;
-        //orderList=other.orderList;
-
-        //assignment of menu
-        for(Customer* c:other.customersList){
-            string custType=c->findType();  //get the type of the customer
-            buildCustomersPointersVector(c->getName(),c->getId(),custType,customersList);
-
-        }
-
-        orderList.clear();
-      // assignment of order list
-        for(OrderPair op:other.orderList){
-            orderList.push_back(op);
-        }
-
-    }
-    return *this;
-}
-//move assignment
-Table& Table::operator=(Table &&other) {
-    if(this!=&other){
-        clear();
-        open=other.open;
-
-        for(Customer* c:other.customersList){
-            customersList.push_back(c);
-        }
-        for(OrderPair op:other.orderList){
-            orderList.push_back(op);
-        }
-        //assign nullptr in vectors values:
-        //for tables:
-        for (Customer *c:other.customersList) {
-            delete (c);
-            c = nullptr;
-        }
-
-    }
-    return *this;
-}
-//this function creates and push the suit type of customer into customers list
-void Table::buildCustomersPointersVector(string CustomerName,int customerId,string CustomerType,vector<Customer*> &customersList){
-    Customer *customer;
-    if(CustomerType=="veg"){
-        customer=new VegetarianCustomer(CustomerName,customerId);
-    }
-    else if(CustomerType=="chp"){
-        customer=new CheapCustomer(CustomerName,customerId);
-    }
-    else if(CustomerType=="spc"){
-        customer=new SpicyCustomer(CustomerName,customerId);
-    }
-    else if(CustomerType=="alc"){
-        customer=new AlchoholicCustomer(CustomerName,customerId);
-    }
-    customersList.push_back(customer);
-}

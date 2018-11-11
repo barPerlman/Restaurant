@@ -28,12 +28,10 @@ public:
     Restaurant& operator=(Restaurant&& other);      //move assignment
 
 private:
-    int lastId; //holds the id of last constructed customer
     bool open;
     std::vector<Table*> tables;
     std::vector<Dish> menu;
     std::vector<BaseAction*> actionsLog;
-
     DishType stringToDishType(std::string s_d_type); //this convert string to my dishType enum
 
     void readConfigFile(std::ifstream &file, std::string &readLine);    //read config file
