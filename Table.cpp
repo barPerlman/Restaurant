@@ -147,7 +147,7 @@ void Table::clear() {
    if(customersList.size()>0) {
 
        for (Customer *customer:customersList) {
-           delete[] customer;
+           delete customer;
            customer = nullptr;
        }
        customersList.clear();
@@ -158,11 +158,20 @@ void Table::clear() {
 }
 
 //copy constructor
-Table::Table(const Table &other) :
-        capacity(other.getCapacity()),
-        open(other.open),
-        customersList(other.customersList),
-        orderList(other.orderList) {}
+Table::Table(const Table &other) {
+    //deep copy
+    //copy the customers
+    for(Customer* c:other.customersList){
+        customersList.push_back(c->getCustomerInstance()); //get copied instances of customers
+    }
+    //copy the orders list
+    for(OrderPair op:other.orderList){
+        orderList.push_back(op);
+    }
+
+    open=other.open;
+    capacity=other.capacity;
+}
 
 //copy assignment
 Table& Table::operator=(const Table &other)

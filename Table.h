@@ -25,6 +25,7 @@ public:
     void closeTable();
     int getBill();
     bool isOpen();
+    Table(const Table &other);// copy constructor
 
 private:
     void clear();
@@ -32,7 +33,7 @@ private:
     bool open;
     std::vector<Customer*> customersList;
     std::vector<OrderPair> orderList; //A list of pairs for each order in a table - (customer_id, Dish)
-    Table(const Table &other);// copy constructor
+
 };
 
 

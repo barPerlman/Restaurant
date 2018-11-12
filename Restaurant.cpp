@@ -205,13 +205,13 @@ Restaurant::~Restaurant() {
 void Restaurant::clear() {
     //remove tables vector
     for(Table *table:tables){
-        delete[] table;
+        delete table;
         table= nullptr;
     }
     tables.clear();
     //remove base actions log
     for(BaseAction *baseAction:actionsLog){
-        delete [] baseAction;
+        delete  baseAction;
         baseAction= nullptr;
     }
     actionsLog.clear();
@@ -233,8 +233,10 @@ Restaurant::Restaurant(const Restaurant &other): lastId(lastId),open(other.open)
         actionsLog.push_back(actionCopy);   //push action copy instance to actions log
     }
     //copy the data into tables
-    for(int i=0;i<other.getNumOfTables();i++) {
-        tables.at(i)=other.tables.at(i);    //use the copy assignment of table
+    for(Table* table:other.tables)//int i=0;i<other.getNumOfTables();i++) {
+    {
+        Table t=*table;
+        tables.push_back(new Table(t));
     }
 
 
@@ -246,12 +248,12 @@ Restaurant::Restaurant(Restaurant &&other):tables(other.tables),menu(other.menu)
     //assign nullptr in vectors values:
     //for tables:
     for (Table *table:other.tables) {
-        delete[] table;
+        delete table;
         table = nullptr;
     }
     //for actions log:
     for(BaseAction *action:other.actionsLog){
-        delete[] action;
+        delete action;
         action= nullptr;
     }
 
@@ -269,8 +271,10 @@ Restaurant& Restaurant::operator=(const Restaurant &other) {
             actionsLog.push_back(actionCopy);   //push action copy instance to actions log
         }
         //copy the data into tables
-        for(int i=0;i<other.getNumOfTables();i++) {
-            tables.at(i)=other.tables.at(i);    //use the copy assignment of table
+        for(Table* table:other.tables)//int i=0;i<other.getNumOfTables();i++) {
+        {
+            Table t=*table;
+            tables.push_back(new Table(t));
         }
         ///////////////////////////////////////////////////////////////////////////////////
         //assignment of menu
@@ -298,12 +302,12 @@ Restaurant& Restaurant::operator=(Restaurant &&other) {
         //assign nullptr in vectors values:
         //for tables:
         for (Table *table:other.tables) {
-            delete[] table;
+            delete table;
             table = nullptr;
         }
         //for actions log:
         for(BaseAction *action:other.actionsLog){
-            delete[] action;
+            delete action;
             action= nullptr;
         }
     }
