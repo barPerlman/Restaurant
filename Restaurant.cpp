@@ -221,12 +221,12 @@ void Restaurant::clear() {
 //copy constructor
 Restaurant::Restaurant(const Restaurant &other): lastId(lastId),open(other.open),menu(other.menu){
 
-    //initialization of tables in the restaurant
+  /*  //initialization of tables in the restaurant
     for(int i=0;i<other.getNumOfTables();i++) {
         Table *t_table = new Table(other.tables.at(i)->getCapacity());
         tables.push_back(t_table);
     }
-
+*/
     //copy the actions log and take the relevant data from
     for(int i=0;i<other.getActionsLog().size();i++){
         BaseAction* actionCopy=other.getActionsLog().at(i)->getActionInstance();    //get a pointer to new copy of action instance
@@ -235,8 +235,8 @@ Restaurant::Restaurant(const Restaurant &other): lastId(lastId),open(other.open)
     //copy the data into tables
     for(Table* table:other.tables)//int i=0;i<other.getNumOfTables();i++) {
     {
-        Table t=*table;
-        tables.push_back(new Table(t));
+        //Table t=*table;
+        tables.push_back(new Table(*table));
     }
 
 
@@ -273,8 +273,9 @@ Restaurant& Restaurant::operator=(const Restaurant &other) {
         //copy the data into tables
         for(Table* table:other.tables)//int i=0;i<other.getNumOfTables();i++) {
         {
-            Table t=*table;
-            tables.push_back(new Table(t));
+            //Table t=*table;
+
+            tables.push_back(new Table(*table));
         }
         ///////////////////////////////////////////////////////////////////////////////////
         //assignment of menu

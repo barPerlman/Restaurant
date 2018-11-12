@@ -158,7 +158,7 @@ void Table::clear() {
 }
 
 //copy constructor
-Table::Table(const Table &other) {
+Table::Table(const Table &other):open(other.open),capacity(other.capacity) {
     //deep copy
     //copy the customers
     for(Customer* c:other.customersList){
@@ -169,8 +169,8 @@ Table::Table(const Table &other) {
         orderList.push_back(op);
     }
 
-    open=other.open;
-    capacity=other.capacity;
+
+
 }
 
 //copy assignment
