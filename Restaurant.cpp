@@ -471,14 +471,16 @@ void Restaurant::printActionsLog(){
 //this function make instance of action that response of back up restaurant states
 void Restaurant::backupRestaurant(){
     BaseAction * backup=new BackupRestaurant();
-    actionsLog.push_back(backup);
     backup->act(*this);
+    actionsLog.push_back(backup);
+
 }
 //this function make instance of action that response of restoring to last restaurant backup
 void Restaurant::restoreRestaurant(){
-    BaseAction * restore=new RestoreResturant();
-    actionsLog.push_back(restore);
+    BaseAction *restore=new RestoreResturant();
     restore->act(*this);
+    actionsLog.push_back(restore);
+
 }
 
 

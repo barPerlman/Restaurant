@@ -51,7 +51,7 @@ std::string Close::toString() const {
 
 BaseAction* Close::getActionInstance() {    //return a pointer for a action instance copy
 
-    BaseAction* actionCopy=new Close(tableId); //instance holds the copy of the action order
+    BaseAction* actionCopy=new Close(*this); //instance holds the copy of the action order
     return actionCopy;
 }
 
@@ -83,7 +83,7 @@ std::string CloseAll::toString() const {
 
 BaseAction* CloseAll::getActionInstance() {    //return a pointer for a action instance copy
 
-    BaseAction* actionCopy=new CloseAll(); //instance holds the copy of the action order
+    BaseAction* actionCopy=new CloseAll(*this); //instance holds the copy of the action order
     return actionCopy;
 }
 
@@ -111,7 +111,7 @@ std::string PrintMenu::toString() const {
 
 BaseAction* PrintMenu::getActionInstance() {    //return a pointer for a action instance copy
 
-    BaseAction* actionCopy=new PrintMenu(); //instance holds the copy of the action order
+    BaseAction* actionCopy=new PrintMenu(*this); //instance holds the copy of the action order
     return actionCopy;
 }
 
@@ -159,7 +159,7 @@ std::string PrintTableStatus::toString() const {
 
 BaseAction* PrintTableStatus::getActionInstance() {    //return a pointer for a action instance copy
 
-    BaseAction* actionCopy=new PrintTableStatus(tableId); //instance holds the copy of the action order
+    BaseAction* actionCopy=new PrintTableStatus(*this); //instance holds the copy of the action order
     return actionCopy;
 }
 
@@ -190,7 +190,7 @@ std::string BackupRestaurant::toString() const {
 
 BaseAction* BackupRestaurant::getActionInstance() {    //return a pointer for a action instance copy
 
-    BaseAction* actionCopy=new BackupRestaurant(); //instance holds the copy of the action order
+    BaseAction* actionCopy=new BackupRestaurant(*this); //instance holds the copy of the action order
     return actionCopy;
 }
 
@@ -229,7 +229,7 @@ std::string RestoreResturant::toString() const {
 
 BaseAction* RestoreResturant::getActionInstance() {    //return a pointer for a action instance copy
 
-    BaseAction* actionCopy=new RestoreResturant(); //instance holds the copy of the action order
+    BaseAction* actionCopy=new RestoreResturant(*this); //instance holds the copy of the action order
     return actionCopy;
 }
 

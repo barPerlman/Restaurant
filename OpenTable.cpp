@@ -30,7 +30,6 @@ OpenTable::OpenTable(const OpenTable &other):BaseAction(other),tableId(other.tab
     for (Customer *c:other.customers) {
         customers.push_back(c->getCustomerInstance()); //get copied instances of customers
     }
-    //customers=customerListCopy;
 }
 
 //move constructor

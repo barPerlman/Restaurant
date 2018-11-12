@@ -21,6 +21,6 @@ std::string PrintActionsLog::toString() const{}
 
 BaseAction* PrintActionsLog::getActionInstance() {    //return a pointer for a action instance copy
 
-    BaseAction* actionCopy=new PrintActionsLog(); //instance holds the copy of the action order
+    BaseAction* actionCopy=new PrintActionsLog(*this); //instance holds the copy of the action order
     return actionCopy;
 }

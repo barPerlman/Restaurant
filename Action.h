@@ -66,8 +66,9 @@ private:
 class MoveCustomer : public BaseAction {
 public:
 	BaseAction* getActionInstance();
+    MoveCustomer(const MoveCustomer &other);
 
-	MoveCustomer(int src, int dst, int customerId);
+        MoveCustomer(int src, int dst, int customerId);
     void act(Restaurant &restaurant);
     std::string toString() const;
 private:

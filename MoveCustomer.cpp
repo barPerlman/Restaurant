@@ -13,6 +13,10 @@ using namespace std;
 MoveCustomer::MoveCustomer(int src, int dst, int customerId)
         : BaseAction(), srcTable(src), dstTable(dst), id(customerId) {}
 
+
+//copy constructor
+MoveCustomer::MoveCustomer(const MoveCustomer &other):BaseAction(other),srcTable(other.srcTable),dstTable(other.dstTable),id(other.id) {}
+
 void MoveCustomer::act(Restaurant &restaurant) {
 
 //those assigned for readability of the code
@@ -69,6 +73,6 @@ std::string MoveCustomer::toString() const {
 
 BaseAction* MoveCustomer::getActionInstance() {    //return a pointer for a action instance copy
 
-    BaseAction* actionCopy=new MoveCustomer(srcTable,dstTable,id); //instance holds the copy of the action order
+    BaseAction* actionCopy=new MoveCustomer(*this); //instance holds the copy of the action order
     return actionCopy;
 }
