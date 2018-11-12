@@ -259,5 +259,24 @@ std::string SpicyCustomer::findType() {
 }
 
 
+//the following functions returns a pointer to a copy of the actual customer
+Customer* AlchoholicCustomer::getCustomerInstance()	{
+    Customer* copyCustomer=new AlchoholicCustomer(this->getName(),this->getId());
+    return copyCustomer;
+}
 
+Customer* VegetarianCustomer::getCustomerInstance()	{
+    Customer* copyCustomer=new VegetarianCustomer(this->getName(),this->getId());
+    return copyCustomer;
+}
+
+Customer* CheapCustomer::getCustomerInstance()	{
+    Customer* copyCustomer=new CheapCustomer(this->getName(),this->getId());
+    return copyCustomer;
+}
+
+Customer* SpicyCustomer::getCustomerInstance(){
+    Customer* copyCustomer=new SpicyCustomer(this->getName(),this->getId());
+    return copyCustomer;
+}
 

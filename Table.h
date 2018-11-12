@@ -11,6 +11,8 @@ typedef std::pair<std::string, Dish> CurrOrderPair;     //define new vector of p
 class Table{
 public:
     virtual ~Table(); //destructor
+    Table& operator=(const Table &other);   //copy assignment
+
     Table(int t_capacity);
     int getCapacity() const;
     void addCustomer(Customer* customer);

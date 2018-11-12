@@ -36,3 +36,9 @@ std::string Order::toString() const{
     }
     return orderStr;
 }
+
+BaseAction* Order::getActionInstance() {    //return a pointer for a action instance copy
+
+    BaseAction* actionCopy=new Order(tableId); //instance holds the copy of the action order
+    return actionCopy;
+}

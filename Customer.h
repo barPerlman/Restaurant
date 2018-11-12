@@ -7,7 +7,7 @@
 
 class Customer{
 public:
-
+	virtual Customer* getCustomerInstance()=0;	//returns a pointer to a copy of the actual customer
 	virtual std::string findType()=0;	//return customer type
 	Customer(const Customer &other);
 
@@ -26,6 +26,8 @@ private:
 
 class VegetarianCustomer : public Customer {
 public:
+	Customer* getCustomerInstance();	//returns a pointer to a copy of the actual customer
+
 	std::string findType();
 	VegetarianCustomer(std::string name, int id);
     std::vector<int> order(const std::vector<Dish> &menu);
@@ -36,6 +38,8 @@ private:
 
 class CheapCustomer : public Customer {
 public:
+	Customer* getCustomerInstance();	//returns a pointer to a copy of the actual customer
+
 	std::string findType();
 
 	CheapCustomer(std::string name, int id);
@@ -48,6 +52,8 @@ private:
 
 class SpicyCustomer : public Customer {
 public:
+	Customer* getCustomerInstance();	//returns a pointer to a copy of the actual customer
+
 	std::string findType();
 
 	SpicyCustomer(std::string name, int id);
@@ -60,6 +66,8 @@ private:
 
 class AlchoholicCustomer : public Customer {
 public:
+	Customer* getCustomerInstance();	//returns a pointer to a copy of the actual customer
+
 	std::string findType();
 
 	AlchoholicCustomer(std::string name, int id);

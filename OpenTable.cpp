@@ -12,6 +12,11 @@
 using namespace std;
 //constructor
 OpenTable::OpenTable(int id, std::vector<Customer *> &customersList):BaseAction(),tableId(id),customers(customersList){}
+//empty constructor
+
+OpenTable::OpenTable():tableId(){
+
+}
 
 //destructor of openTable class
 OpenTable::~OpenTable() {
@@ -26,10 +31,12 @@ tableId(other.tableId){}
 
 //move constructor
 OpenTable::OpenTable(OpenTable &&other):customers(customers),tableId(tableId){
+
     for(Customer* c:other.customers){
         delete (c);
         c= nullptr;
     }
+    customers.clear();
 }
 
 void OpenTable::clear(){
@@ -73,4 +80,14 @@ std::string OpenTable::toString() const{
         openStr=getErrorMsg();
     }
     return openStr;
+}
+
+BaseAction* OpenTable::getActionInstance() {    //return a pointer for a action instance copy
+    vector<Customer*> customerListCopy; //a copy of the customer list vector (deep)
+    for(Customer* c:customers){
+        customerListCopy.push_back(c->getCustomerInstance()); //get copied instances of customers
+    }
+
+    BaseAction* actionCopy=new OpenTable(tableId,customerListCopy); //instance holds the copy of the action open table
+    return actionCopy;
 }

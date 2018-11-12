@@ -167,7 +167,7 @@ void Restaurant::start() {
             printActionsLog();
         }
         else if(firstWord=="backup"){
-            backupRestaurant();
+           backupRestaurant();
         }
         else if(firstWord=="restore"){
             restoreRestaurant();
@@ -205,33 +205,53 @@ Restaurant::~Restaurant() {
 void Restaurant::clear() {
     //remove tables vector
     for(Table *table:tables){
-        delete table;
+        delete[] table;
         table= nullptr;
     }
+    tables.clear();
     //remove base actions log
     for(BaseAction *baseAction:actionsLog){
-        delete  baseAction;
+        delete [] baseAction;
         baseAction= nullptr;
     }
+    actionsLog.clear();
+
+    menu.clear();
 }
 //copy constructor
-Restaurant::Restaurant(const Restaurant &other):
-open(other.open),
-tables(other.tables),
-menu(other.menu),
-actionsLog(other.actionsLog){}
+Restaurant::Restaurant(const Restaurant &other): lastId(lastId),open(other.open),menu(other.menu){
+
+    //initialization of tables in the restaurant
+    for(int i=0;i<other.getNumOfTables();i++) {
+        Table *t_table = new Table(other.tables.at(i)->getCapacity());
+        tables.push_back(t_table);
+    }
+
+    //copy the actions log and take the relevant data from
+    for(int i=0;i<other.getActionsLog().size();i++){
+        BaseAction* actionCopy=other.getActionsLog().at(i)->getActionInstance();    //get a pointer to new copy of action instance
+        actionsLog.push_back(actionCopy);   //push action copy instance to actions log
+    }
+    //copy the data into tables
+    for(int i=0;i<other.getNumOfTables();i++) {
+        tables.at(i)=other.tables.at(i);    //use the copy assignment of table
+    }
+
+
+}
+
 
 //move constructor
 Restaurant::Restaurant(Restaurant &&other):tables(other.tables),menu(other.menu),actionsLog(other.actionsLog) {
     //assign nullptr in vectors values:
     //for tables:
     for (Table *table:other.tables) {
-        delete table;
+        delete[] table;
         table = nullptr;
     }
     //for actions log:
     for(BaseAction *action:other.actionsLog){
-        delete action;
+        delete[] action;
         action= nullptr;
     }
 
@@ -241,14 +261,24 @@ Restaurant::Restaurant(Restaurant &&other):tables(other.tables),menu(other.menu)
 Restaurant& Restaurant::operator=(const Restaurant &other) {
     if(this!=&other){
         clear();
-        tables=other.tables;
 
+        //////////////////////////////copy constructor part///////////////////////////////////
+        //copy the actions log and take the relevant data from
+        for(int i=0;i<other.getActionsLog().size();i++){
+            BaseAction* actionCopy=other.getActionsLog().at(i)->getActionInstance();    //get a pointer to new copy of action instance
+            actionsLog.push_back(actionCopy);   //push action copy instance to actions log
+        }
+        //copy the data into tables
+        for(int i=0;i<other.getNumOfTables();i++) {
+            tables.at(i)=other.tables.at(i);    //use the copy assignment of table
+        }
+        ///////////////////////////////////////////////////////////////////////////////////
         //assignment of menu
-        menu.clear();
         for(Dish d:other.menu){
             menu.push_back(d);
         }
-        actionsLog=other.actionsLog;
+        lastId=other.lastId;
+        open=other.open;
     }
     return *this;
 }
@@ -268,12 +298,12 @@ Restaurant& Restaurant::operator=(Restaurant &&other) {
         //assign nullptr in vectors values:
         //for tables:
         for (Table *table:other.tables) {
-            delete table;
+            delete[] table;
             table = nullptr;
         }
         //for actions log:
         for(BaseAction *action:other.actionsLog){
-            delete action;
+            delete[] action;
             action= nullptr;
         }
     }

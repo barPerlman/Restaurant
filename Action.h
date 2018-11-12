@@ -14,6 +14,7 @@ class Restaurant;
 
 class BaseAction{
 public:
+    virtual BaseAction* getActionInstance()=0;    //return pointer to new instance of the actual action class
     BaseAction();
     ActionStatus getStatus() const;
     virtual void act(Restaurant& restaurant)=0;
@@ -30,11 +31,12 @@ private:
 
 class OpenTable : public BaseAction {
 public:
+    BaseAction* getActionInstance();
     //destructor
-
     virtual ~OpenTable(); //destructor
     OpenTable(const OpenTable &other);    //copy constructor
     OpenTable(OpenTable &&other);         //move constructor
+    OpenTable();                            //empty constructor
 
 
 
@@ -44,13 +46,15 @@ public:
 private:
     void clear();
 	const int tableId;
-	const std::vector<Customer *> customers;
+	std::vector<Customer *> customers;
 };
 
 
 class Order : public BaseAction {
 public:
-    Order(int id);
+	BaseAction* getActionInstance();
+
+	Order(int id);
     void act(Restaurant &restaurant);
     std::string toString() const;
 private:
@@ -60,7 +64,9 @@ private:
 
 class MoveCustomer : public BaseAction {
 public:
-    MoveCustomer(int src, int dst, int customerId);
+	BaseAction* getActionInstance();
+
+	MoveCustomer(int src, int dst, int customerId);
     void act(Restaurant &restaurant);
     std::string toString() const;
 private:
@@ -72,7 +78,9 @@ private:
 
 class Close : public BaseAction {
 public:
-    Close(int id);
+	BaseAction* getActionInstance();
+
+	Close(int id);
     void act(Restaurant &restaurant);
     std::string toString() const;
 private:
@@ -82,7 +90,9 @@ private:
 
 class CloseAll : public BaseAction {
 public:
-    CloseAll();
+	BaseAction* getActionInstance();
+
+	CloseAll();
     void act(Restaurant &restaurant);
     std::string toString() const;
 private:
@@ -91,7 +101,9 @@ private:
 
 class PrintMenu : public BaseAction {
 public:
-    PrintMenu();
+	BaseAction* getActionInstance();
+
+	PrintMenu();
     void act(Restaurant &restaurant);
     std::string toString() const;
 private:
@@ -100,7 +112,9 @@ private:
 
 class PrintTableStatus : public BaseAction {
 public:
-    PrintTableStatus(int id);
+	BaseAction* getActionInstance();
+
+	PrintTableStatus(int id);
     void act(Restaurant &restaurant);
     std::string toString() const;
 private:
@@ -111,7 +125,9 @@ private:
 
 class PrintActionsLog : public BaseAction {
 public:
-    PrintActionsLog();
+	BaseAction* getActionInstance();
+
+	PrintActionsLog();
     void act(Restaurant &restaurant);
     std::string toString() const;
 private:
@@ -120,7 +136,9 @@ private:
 
 class BackupRestaurant : public BaseAction {
 public:
-    BackupRestaurant();
+	BaseAction* getActionInstance();
+
+	BackupRestaurant();
     void act(Restaurant &restaurant);
     std::string toString() const;
 private:
@@ -129,7 +147,9 @@ private:
 
 class RestoreResturant : public BaseAction {
 public:
-    RestoreResturant();
+	BaseAction* getActionInstance();
+
+	RestoreResturant();
     void act(Restaurant &restaurant);
     std::string toString() const;
 

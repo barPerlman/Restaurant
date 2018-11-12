@@ -18,3 +18,9 @@ void PrintActionsLog::act(Restaurant &restaurant){
 }
 //log action is not displayed according to the specifications document
 std::string PrintActionsLog::toString() const{}
+
+BaseAction* PrintActionsLog::getActionInstance() {    //return a pointer for a action instance copy
+
+    BaseAction* actionCopy=new PrintActionsLog(); //instance holds the copy of the action order
+    return actionCopy;
+}

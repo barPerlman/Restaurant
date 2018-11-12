@@ -66,3 +66,9 @@ std::string MoveCustomer::toString() const {
     }
     return moveStr;
 }
+
+BaseAction* MoveCustomer::getActionInstance() {    //return a pointer for a action instance copy
+
+    BaseAction* actionCopy=new MoveCustomer(srcTable,dstTable,id); //instance holds the copy of the action order
+    return actionCopy;
+}

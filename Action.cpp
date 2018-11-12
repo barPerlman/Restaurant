@@ -49,6 +49,11 @@ std::string Close::toString() const {
     return closeStr;
 }
 
+BaseAction* Close::getActionInstance() {    //return a pointer for a action instance copy
+
+    BaseAction* actionCopy=new Close(tableId); //instance holds the copy of the action order
+    return actionCopy;
+}
 
 /**
 * A CloseAll action is the class that closes all the tables.
@@ -76,6 +81,11 @@ std::string CloseAll::toString() const {
     return "closeall Completed";
 }
 
+BaseAction* CloseAll::getActionInstance() {    //return a pointer for a action instance copy
+
+    BaseAction* actionCopy=new CloseAll(); //instance holds the copy of the action order
+    return actionCopy;
+}
 
 /**
 * A PrintMenu action is the class that prints the menu of the restaurant.
@@ -99,6 +109,11 @@ std::string PrintMenu::toString() const {
     return "Print Menu Completed";
 }
 
+BaseAction* PrintMenu::getActionInstance() {    //return a pointer for a action instance copy
+
+    BaseAction* actionCopy=new PrintMenu(); //instance holds the copy of the action order
+    return actionCopy;
+}
 
 /**
 * A PrintTableStatus action is the class that prints the status report of a given table.
@@ -142,6 +157,11 @@ std::string PrintTableStatus::toString() const {
     return "status "+std::to_string(tableId)+ " Completed";
 }
 
+BaseAction* PrintTableStatus::getActionInstance() {    //return a pointer for a action instance copy
+
+    BaseAction* actionCopy=new PrintTableStatus(tableId); //instance holds the copy of the action order
+    return actionCopy;
+}
 
 /**
 * A BackupRestaurant action is the class that saves all the restaurant information
@@ -168,6 +188,11 @@ std::string BackupRestaurant::toString() const {
     return "Backup Completed";
 }
 
+BaseAction* BackupRestaurant::getActionInstance() {    //return a pointer for a action instance copy
+
+    BaseAction* actionCopy=new BackupRestaurant(); //instance holds the copy of the action order
+    return actionCopy;
+}
 
 /**
 * A RestoreResturant action is the class that saves all the restaurant information
@@ -202,3 +227,8 @@ std::string RestoreResturant::toString() const {
     return closeStr;
 }
 
+BaseAction* RestoreResturant::getActionInstance() {    //return a pointer for a action instance copy
+
+    BaseAction* actionCopy=new RestoreResturant(); //instance holds the copy of the action order
+    return actionCopy;
+}
