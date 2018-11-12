@@ -8,8 +8,8 @@
 class Customer{
 public:
 	virtual Customer* getCustomerInstance()=0;	//returns a pointer to a copy of the actual customer
-	virtual std::string findType()=0;	//return customer type
 	Customer(const Customer &other);
+	bool findInMenu(std::string type,std::vector<Dish> menu);
 
 	Customer(std::string c_name, int c_id);
     virtual std::vector<int> order(const std::vector<Dish> &menu)=0;

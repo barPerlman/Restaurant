@@ -24,11 +24,9 @@ Close::Close(int id) : BaseAction(), tableId(id) {}
 void Close::act(Restaurant &restaurant) {
     //  if the restaurant is open and exist
     if(tableId>=0&&tableId<restaurant.getNumOfTables() && restaurant.getTable(tableId)->isOpen()) {
-        restaurant.getTable(tableId)->closeTable();// update the boolean status of the table
         std::cout << "Table " << std::to_string(tableId) << " was closed. Bill " << std::to_string(restaurant.getTable(tableId)->getBill()) << "NIS"<<std::endl;
         //close table
-       restaurant.getTable(tableId)->closeTable();
-
+        restaurant.getTable(tableId)->closeTable();// update the boolean status of the table
     }
         //  if the restaurant is not exist or is not open
     else{
@@ -217,12 +215,12 @@ void RestoreResturant::act(Restaurant &restaurant) {
 }
 
 std::string RestoreResturant::toString() const {
-    string closeStr="Restore restaurant ";// holds the message to print
+    string closeStr;// holds the message to print
     if(getStatus()==COMPLETED) {// command completed successfully
-        closeStr +="completed";
+        closeStr="restore Completed";
     }
     else{// didn't complete successfully
-        closeStr+="failed";
+        closeStr=getErrorMsg();
     }
     return closeStr;
 }

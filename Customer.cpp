@@ -32,6 +32,14 @@ std::string Customer::castDishType(DishType dishType) {
     return typeStr;
 }
 
+// search if this type of dish exists in the menu
+bool Customer::findInMenu(std::string type,std::vector<Dish> menu){
+    for (Dish dish:menu)
+        if(castDishType(dish.getType())==type)
+            return true;
+    return false;
+}
+
 
 
 // Destructor
@@ -58,26 +66,28 @@ VegetarianCustomer::VegetarianCustomer(std::string name, int id): Customer(name,
 std::vector<int> VegetarianCustomer::order(const std::vector<Dish> &menu){
     // choosing the vegetarian dish with the smallest id in the menu
     std::vector<int> vec;
-    int dishId(0);
-    for(Dish dish:menu) {
-        if (castDishType(dish.getType()).compare("VEG") == 0) {
-            dishId = dish.getId();
-            break;
+    if(findInMenu("VEG",menu) && findInMenu("BVG",menu)) {
+        int dishId(0);
+        for (Dish dish:menu) {
+            if (castDishType(dish.getType()).compare("VEG") == 0) {
+                dishId = dish.getId();
+                break;
+            }
         }
+        vec.push_back(dishId);
+        // choosing the most expensive beverage in the menu
+        int maxPrice(0);
+        int bvgId(0);
+        for (Dish dish:menu) {
+            if (castDishType(dish.getType()).compare("BVG") == 0)
+                if (dish.getPrice() >= maxPrice)
+                    if (dish.getPrice() != maxPrice) {
+                        maxPrice = dish.getPrice();
+                        bvgId = dish.getId();
+                    }
+        }
+        vec.push_back(bvgId);
     }
-    vec.push_back(dishId);
-    // choosing the most expensive beverage in the menu
-    int maxPrice(0);
-    int bvgId(0);
-    for(Dish dish:menu) {
-        if (castDishType(dish.getType()).compare("BVG") == 0)
-            if (dish.getPrice() >= maxPrice)
-                if (dish.getPrice() != maxPrice) {
-                    maxPrice = dish.getPrice();
-                    bvgId = dish.getId();
-                }
-    }
-    vec.push_back(bvgId);
     return vec;
 }
 
@@ -101,38 +111,40 @@ SpicyCustomer::SpicyCustomer(std::string name, int id): Customer(name,id), flag(
 
 std::vector<int> SpicyCustomer::order(const std::vector<Dish> &menu) {
     // choosing the most expensive spicy dish in the menu
-    if (flag) {// if this is the first order
-        std::vector<int> vec;
-        int maxPrice(0);
-        int dishId(0);
-        for (Dish dish:menu){
-            if (castDishType(dish.getType()).compare("SPC") == 0)
-                if (dish.getPrice() >= maxPrice)
-                    if (dish.getPrice() != maxPrice) {
-                        maxPrice = dish.getPrice();
-                        dishId = dish.getId();
-                    }
+    std::vector<int> vec;
+    if (findInMenu("SPC", menu) && findInMenu("BVG", menu)) {
+        // if this is the first order
+        if (flag) {
+            int maxPrice(0);
+            int dishId(0);
+            for (Dish dish:menu) {
+                if (castDishType(dish.getType()).compare("SPC") == 0)
+                    if (dish.getPrice() >= maxPrice)
+                        if (dish.getPrice() != maxPrice) {
+                            maxPrice = dish.getPrice();
+                            dishId = dish.getId();
+                        }
+            }
+            flag = false;
+            vec.push_back(dishId);
         }
-        flag=false;
-        vec.push_back(dishId);
-        return vec;
-    }
-    // choosing the cheapest non-alcoholic beverage in the menu
-    else {
-        std::vector<int> vec;
-        int minPrice=menu[0].getPrice();
-        int bvgId(0);
-        for (Dish dish:menu) {
-            if (castDishType(dish.getType()).compare("BVG") == 0)
-                if (dish.getPrice() <= minPrice)
-                    if (dish.getPrice() != minPrice) {
-                        minPrice = dish.getPrice();
-                        bvgId = dish.getId();
-                    }
+        // choosing the cheapest non-alcoholic beverage in the menu
+        else {
+            int minPrice = menu[0].getPrice();
+            int bvgId(0);
+            for (Dish dish:menu) {
+                if (castDishType(dish.getType()).compare("BVG") == 0)
+                    if (dish.getPrice() <= minPrice)
+                        if (dish.getPrice() != minPrice) {
+                            minPrice = dish.getPrice();
+                            bvgId = dish.getId();
+                        }
+            }
+            vec.push_back(bvgId);
         }
-        vec.push_back(bvgId);
-        return vec;
+
     }
+    return vec;
 }
 std::string SpicyCustomer::toString() const {
     return this->getName()+",spc";
@@ -155,7 +167,6 @@ std::vector<int> CheapCustomer::order(const std::vector<Dish> &menu){
     // choosing the cheapest dish in the menu	.
     std::vector<int> vec;
     if(flag) {
-        int j(0);
         int minPrice = menu[0].getPrice();
         int dishId(0);
         for (Dish dish:menu) {
@@ -166,11 +177,9 @@ std::vector<int> CheapCustomer::order(const std::vector<Dish> &menu){
                 }
         }
         vec.push_back(dishId);
-        flag= false;
-        return vec;
+        flag=false;
     }
-    else
-        return vec;
+    return vec;
 }
 
 std::string CheapCustomer:: toString() const {
@@ -193,23 +202,25 @@ AlchoholicCustomer::AlchoholicCustomer(std::string name, int id): Customer(name,
 std::vector<int> AlchoholicCustomer::order(const std::vector<Dish> &menu) {
     // choosing the alcoholic beverages in the menu
     std::vector<int> vec;
-    int tempPrice(0),tempId(0);
-    std::vector<Dish> alcMenu=sortAlcDish(menu);
-    std::vector<int> prices=exportParameter(alcMenu,0);
-    std::vector<int> ids=exportParameter(alcMenu,1);
-    for (int i = 0; i < static_cast<int>(alcMenu.size())-1; i++) // according bubble sort
-        for (int j = 0; j < static_cast<int>(alcMenu.size()) - i - 1; j++)// Last i elements are already in place
-            if (prices[j]> prices[j + 1]){
-                tempPrice=prices[j];
-                tempId=ids[j];
-                prices[j]=prices[j+1];
-                ids[j]=ids[j+1];
-                prices[j+1]=tempPrice;
-                ids[j+1]=tempId;
-            }
-    numOfOrders++;
-    if(numOfOrders<static_cast<int>(ids.size())){
-        vec.push_back(ids[numOfOrders]);
+    if (findInMenu("ALC", menu)) {
+        int tempPrice(0), tempId(0);
+        std::vector<Dish> alcMenu = sortAlcDish(menu);
+        std::vector<int> prices = exportParameter(alcMenu, 0);
+        std::vector<int> ids = exportParameter(alcMenu, 1);
+        for (int i = 0; i < static_cast<int>(alcMenu.size()) - 1; i++) // according bubble sort
+            for (int j = 0; j < static_cast<int>(alcMenu.size()) - i - 1; j++)// Last i elements are already in place
+                if (prices[j] > prices[j + 1]) {
+                    tempPrice = prices[j];
+                    tempId = ids[j];
+                    prices[j] = prices[j + 1];
+                    ids[j] = ids[j + 1];
+                    prices[j + 1] = tempPrice;
+                    ids[j + 1] = tempId;
+                }
+        numOfOrders++;
+        if (numOfOrders < static_cast<int>(ids.size())) {
+            vec.push_back(ids[numOfOrders]);
+        }
     }
     return vec;
 }

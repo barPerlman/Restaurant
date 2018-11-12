@@ -50,8 +50,9 @@ void MoveCustomer::act(Restaurant &restaurant) {
         //check if there is a need to close the src table (0 customers left)
         //there is no requirement to save this act in the actions log when it's part of the move act
         if (restaurant.getTable(srcTable)->getCustomers().size() <= 0) {
-            Close close_src_table(srcTable);
-            close_src_table.act(restaurant);
+            //Close close_src_table(srcTable);
+          //  close_src_table.act(restaurant);
+          restaurant.getTable(srcTable)->closeTable();  //close table with src id
         }
         complete();
     } else {   //cannot move the customer

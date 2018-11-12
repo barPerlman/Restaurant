@@ -50,7 +50,7 @@ void Table::removeCustomer(int id) {
     if (found) {
         vector<OrderPair> orderListCopy(orderList);  //deep copy orders to temp list orders
         orderList.clear();
-        for (OrderPair op:orderListCopy) {    //get back to origin vetor the orders without orders attributed to the 'id'
+        for (OrderPair op:orderListCopy) {    //get back to origin vector the orders without orders attributed to the 'id'
             if (op.first != id) {
                 orderList.push_back(op);
             }
