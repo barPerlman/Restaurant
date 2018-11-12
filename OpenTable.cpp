@@ -25,9 +25,13 @@ OpenTable::~OpenTable() {
 
 
 //copy constructor
-OpenTable::OpenTable(const OpenTable &other):
-customers(other.customers),
-tableId(other.tableId){}
+OpenTable::OpenTable(const OpenTable &other):BaseAction(other),tableId(other.tableId) {
+    //vector<Customer *> customerListCopy; //a copy of the customer list vector (deep)
+    for (Customer *c:other.customers) {
+        customers.push_back(c->getCustomerInstance()); //get copied instances of customers
+    }
+    //customers=customerListCopy;
+}
 
 //move constructor
 OpenTable::OpenTable(OpenTable &&other):customers(customers),tableId(tableId){
@@ -51,7 +55,7 @@ void OpenTable::act(Restaurant &restaurant){
     if(tableId<0||tableId>=restaurant.getNumOfTables()||restaurant.getTable(tableId)->isOpen()||
     restaurant.getTable(tableId)->getCapacity()<customers.size()){
         error("Table does not exist or is already open");
-        std::cout<<"Table does not exist or is already open"<<std::endl;
+        std::cout<<"Error: Table does not exist or is already open"<<std::endl;
     }
     else{      //can open table
         //add customers to the list
@@ -83,11 +87,8 @@ std::string OpenTable::toString() const{
 }
 
 BaseAction* OpenTable::getActionInstance() {    //return a pointer for a action instance copy
-    vector<Customer*> customerListCopy; //a copy of the customer list vector (deep)
-    for(Customer* c:customers){
-        customerListCopy.push_back(c->getCustomerInstance()); //get copied instances of customers
-    }
 
-    BaseAction* actionCopy=new OpenTable(tableId,customerListCopy); //instance holds the copy of the action open table
+    BaseAction* actionCopy=new OpenTable(*this); //instance holds the copy of the action open table
+
     return actionCopy;
 }

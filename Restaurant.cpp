@@ -228,10 +228,18 @@ Restaurant::Restaurant(const Restaurant &other): lastId(lastId),open(other.open)
     }
 */
     //copy the actions log and take the relevant data from
-    for(int i=0;i<other.getActionsLog().size();i++){
-        BaseAction* actionCopy=other.getActionsLog().at(i)->getActionInstance();    //get a pointer to new copy of action instance
-        actionsLog.push_back(actionCopy);   //push action copy instance to actions log
-    }
+    /*for(int i=0;i<other.actionsLog.size();i++){
+       // BaseAction* actionCopy=other.getActionsLog().at(i)->getActionInstance();    //get a pointer to new copy of action instance
+        actionsLog.push_back(other.actionsLog.at(i)->getActionInstance());   //push action copy instance to actions log
+    }*/
+
+   for(BaseAction* ba:other.actionsLog){
+
+       actionsLog.push_back(ba->getActionInstance());
+
+   }
+
+
     //copy the data into tables
     for(Table* table:other.tables)//int i=0;i<other.getNumOfTables();i++) {
     {
@@ -266,15 +274,18 @@ Restaurant& Restaurant::operator=(const Restaurant &other) {
 
         //////////////////////////////copy constructor part///////////////////////////////////
         //copy the actions log and take the relevant data from
-        for(int i=0;i<other.getActionsLog().size();i++){
-            BaseAction* actionCopy=other.getActionsLog().at(i)->getActionInstance();    //get a pointer to new copy of action instance
-            actionsLog.push_back(actionCopy);   //push action copy instance to actions log
+        /*for(int i=0;i<other.getActionsLog().size();i++){
+           // BaseAction* actionCopy=other.getActionsLog().at(i)->getActionInstance();    //get a pointer to new copy of action instance
+            actionsLog.push_back(other.getActionsLog().at(i)->getActionInstance());   //push action copy instance to actions log
+        }*/
+
+        for(BaseAction* ba:other.actionsLog){
+            actionsLog.push_back(ba->getActionInstance());
         }
+
         //copy the data into tables
         for(Table* table:other.tables)//int i=0;i<other.getNumOfTables();i++) {
         {
-            //Table t=*table;
-
             tables.push_back(new Table(*table));
         }
         ///////////////////////////////////////////////////////////////////////////////////

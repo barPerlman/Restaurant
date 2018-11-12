@@ -40,7 +40,7 @@ void Close::act(Restaurant &restaurant) {
 std::string Close::toString() const {
     string closeStr=""; //holds the message to print
     if(getStatus()==COMPLETED) {    //command completed successfully
-        closeStr="";
+        closeStr="close"+to_string(tableId)+" Completed";
 
     }
     else{       //didn't complete successfully
@@ -232,3 +232,4 @@ BaseAction* RestoreResturant::getActionInstance() {    //return a pointer for a 
     BaseAction* actionCopy=new RestoreResturant(); //instance holds the copy of the action order
     return actionCopy;
 }
+
