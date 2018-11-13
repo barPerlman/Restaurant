@@ -31,5 +31,6 @@ std::string BaseAction::getErrorMsg() const{
     return errorMsg;
 }
 
+
 //copy constructor
 BaseAction::BaseAction(const BaseAction &other):errorMsg(other.errorMsg),status(other.status){}

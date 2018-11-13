@@ -15,8 +15,7 @@ MoveCustomer::MoveCustomer(int src, int dst, int customerId)
 
 
 //copy constructor
-MoveCustomer::MoveCustomer(const MoveCustomer &other) : BaseAction(other), srcTable(other.srcTable),
-                                                        dstTable(other.dstTable), id(other.id) {}
+MoveCustomer::MoveCustomer(const MoveCustomer &other):BaseAction(other),srcTable(other.srcTable),dstTable(other.dstTable),id(other.id) {}
 
 void MoveCustomer::act(Restaurant &restaurant) {
 
@@ -50,11 +49,12 @@ void MoveCustomer::act(Restaurant &restaurant) {
 
         //check if there is a need to close the src table (0 customers left)
         //there is no requirement to save this act in the actions log when it's part of the move act
-        if (restaurant.getTable(srcTable)->getCustomers().empty()) {
-
-            restaurant.getTable(srcTable)->closeTable();  //close table with src id
+        if (restaurant.getTable(srcTable)->getCustomers().size() <= 0) {
+            //Close close_src_table(srcTable);
+          //  close_src_table.act(restaurant);
+          restaurant.getTable(srcTable)->closeTable();  //close table with src id
         }
-        complete(); //close status change to COMPLETED
+        complete();
     } else {   //cannot move the customer
         std::cout << "Cannot move customer" << std::endl;
         error("Cannot move customer");
@@ -63,17 +63,17 @@ void MoveCustomer::act(Restaurant &restaurant) {
 
 //this function responsible to return the activation feedback of the move act
 std::string MoveCustomer::toString() const {
-    string moveStr;
+    string moveStr = "";
     if (getStatus() == COMPLETED) { //completed successfully
-        moveStr = "move " + to_string(srcTable) + " " + to_string(dstTable) + " " + to_string(id) + " Completed";
+        moveStr += "move " + to_string(srcTable) + " " + to_string(dstTable) + " " + to_string(id) + " Completed";
     } else { //ended with error
-        moveStr = getErrorMsg();
+        moveStr += getErrorMsg();
     }
     return moveStr;
 }
 
-BaseAction *MoveCustomer::getActionInstance() {    //return a pointer for a action instance copy
+BaseAction* MoveCustomer::getActionInstance() {    //return a pointer for a action instance copy
 
-    BaseAction *actionCopy = new MoveCustomer(*this); //instance holds the copy of the action order
+    BaseAction* actionCopy=new MoveCustomer(*this); //instance holds the copy of the action order
     return actionCopy;
 }

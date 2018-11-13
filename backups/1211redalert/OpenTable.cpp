@@ -1,4 +1,6 @@
-
+//
+// Created by barper on 11/7/18.
+//
 #include "Action.h"
 #include "Restaurant.h"
 #include <iostream>
@@ -10,18 +12,11 @@
 using namespace std;
 //constructor
 OpenTable::OpenTable(int id, std::vector<Customer *> &customersList):BaseAction(),tableId(id),customers(customersList){}
-
 //empty constructor
-OpenTable::OpenTable():BaseAction(),tableId(){
+
+OpenTable::OpenTable():tableId(){
 
 }
-
-//move constructor
-OpenTable::OpenTable(OpenTable &&other):BaseAction(),tableId(other.tableId){
-    //steal other customers pointers
-   customers=std::move(other.customers);
-}
-
 
 //destructor of openTable class
 OpenTable::~OpenTable() {
@@ -31,12 +26,21 @@ OpenTable::~OpenTable() {
 
 //copy constructor
 OpenTable::OpenTable(const OpenTable &other):BaseAction(other),tableId(other.tableId) {
+    //vector<Customer *> customerListCopy; //a copy of the customer list vector (deep)
     for (Customer *c:other.customers) {
         customers.push_back(c->getCustomerInstance()); //get copied instances of customers
     }
 }
 
+//move constructor
+OpenTable::OpenTable(OpenTable &&other):customers(customers),tableId(tableId){
 
+    for(Customer* c:other.customers){
+        delete (c);
+        c= nullptr;
+    }
+    customers.clear();
+}
 
 void OpenTable::clear(){
     for(Customer *customer:customers){
@@ -65,12 +69,12 @@ void OpenTable::act(Restaurant &restaurant){
 }
 //print a feedback to the open table command
 std::string OpenTable::toString() const{
-    string openStr; //holds the message to print
+    string openStr=""; //holds the message to print
     if(getStatus()==COMPLETED) {    //command completed successfully
-        openStr="open " + to_string(tableId);
+        openStr.append("open " + to_string(tableId));
         for (Customer *c:customers) {
 
-            openStr+=openStr+" " + c->toString();
+            openStr=openStr+" " + c->toString();
 
         }
         openStr+=" Completed";

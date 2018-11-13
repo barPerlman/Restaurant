@@ -27,12 +27,12 @@ void Order::act(Restaurant &restaurant){
 }
 //create an order output string for log
 std::string Order::toString() const{
-    string orderStr;
+    string orderStr="";
     if(getStatus()==COMPLETED){
-        orderStr="order "+to_string(tableId)+" Completed";
+        orderStr+="order "+to_string(tableId)+" Completed";
     }
     else{
-        orderStr=getErrorMsg();
+        orderStr+=getErrorMsg();
     }
     return orderStr;
 }

@@ -15,12 +15,11 @@ class Restaurant;
 class BaseAction{
 public:
     virtual BaseAction* getActionInstance()=0;    //return pointer to new instance of the actual action class
-    BaseAction();									//empty constructor
+    BaseAction();
     BaseAction(const BaseAction &other);        //copy constructor
     ActionStatus getStatus() const;
     virtual void act(Restaurant& restaurant)=0;
     virtual std::string toString() const=0;
-    virtual ~BaseAction();
 protected:
     void complete();
     void error(std::string errorMsg);
