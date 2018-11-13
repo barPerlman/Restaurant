@@ -65,9 +65,8 @@ void OpenTable::act(Restaurant &restaurant){
 }
 //print a feedback to the open table command
 std::string OpenTable::toString() const{
-    string openStr; //holds the message to print
+    string openStr="open " + to_string(tableId); //holds the message to print
     if(getStatus()==COMPLETED) {    //command completed successfully
-        openStr="open " + to_string(tableId);
         for (Customer *c:customers) {
 
             openStr+=openStr+" " + c->toString();
@@ -76,7 +75,7 @@ std::string OpenTable::toString() const{
         openStr+=" Completed";
     }
     else{       //didn't complete successfully
-        openStr=getErrorMsg();
+        openStr+=" "+getErrorMsg();
     }
     return openStr;
 }
