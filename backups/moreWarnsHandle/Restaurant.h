@@ -23,9 +23,9 @@ public:
     //rule of 5
     virtual ~Restaurant();                  //destructor
     Restaurant(const Restaurant &other);    //copy constructor
-    Restaurant(Restaurant &&other) noexcept;         //move constructor
+    Restaurant(Restaurant &&other);         //move constructor
     Restaurant& operator=(const Restaurant &other); //copy assignment
-    Restaurant& operator=(Restaurant&& other) noexcept;      //move assignment
+    Restaurant& operator=(Restaurant&& other);      //move assignment
 
 private:
     int lastId;
