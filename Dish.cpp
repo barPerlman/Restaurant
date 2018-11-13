@@ -2,7 +2,6 @@
 
 #include "Restaurant.h"
 #include "Table.h"//
-// Created by barper on 11/3/18.
 // The following classes are implemented in this file:
 //Restaurant,Table,Dish
 //

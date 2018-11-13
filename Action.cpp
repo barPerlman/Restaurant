@@ -66,7 +66,7 @@ CloseAll::CloseAll():BaseAction(){}
 
 // close a table in the restaurant with tableId
 void CloseAll::act(Restaurant &restaurant) {
-    for(int i=1; i<=restaurant.getNumOfTables(); i++) {
+    for(int i=0; i<restaurant.getNumOfTables(); i++) {
         if (restaurant.getTable(i)->isOpen()) {
             Close close(i);
             close.act(restaurant);
