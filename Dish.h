@@ -15,7 +15,6 @@ public:
     int getPrice() const;
     DishType getType() const;
     std::string toString() const; //prints the dish in the required format
-    Dish &operator=(const Dish &other);
 private:
 	const int id;
     const std::string name;

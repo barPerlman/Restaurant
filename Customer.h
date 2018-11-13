@@ -26,25 +26,20 @@ private:
 
 class VegetarianCustomer : public Customer {
 public:
-	Customer* getCustomerInstance();	//returns a pointer to a copy of the actual customer
-
-	std::string findType();
+	Customer* getCustomerInstance() override;	//returns a pointer to a copy of the actual customer
 	VegetarianCustomer(std::string name, int id);
-    std::vector<int> order(const std::vector<Dish> &menu);
-    std::string toString() const;
+    std::vector<int> order(const std::vector<Dish> &menu) override;
+    std::string toString() const override;
 private:
 };
 
 
 class CheapCustomer : public Customer {
 public:
-	Customer* getCustomerInstance();	//returns a pointer to a copy of the actual customer
-
-	std::string findType();
-
+	Customer* getCustomerInstance() override;	//returns a pointer to a copy of the actual customer
 	CheapCustomer(std::string name, int id);
-    std::vector<int> order(const std::vector<Dish> &menu);
-    std::string toString() const;
+    std::vector<int> order(const std::vector<Dish> &menu) override;
+    std::string toString() const override;
 private:
 	bool flag; // check if the customer already ordered before
 };
@@ -52,13 +47,10 @@ private:
 
 class SpicyCustomer : public Customer {
 public:
-	Customer* getCustomerInstance();	//returns a pointer to a copy of the actual customer
-
-	std::string findType();
-
+	Customer* getCustomerInstance() override;	//returns a pointer to a copy of the actual customer
 	SpicyCustomer(std::string name, int id);
-    std::vector<int> order(const std::vector<Dish> &menu);
-    std::string toString() const;
+    std::vector<int> order(const std::vector<Dish> &menu) override;
+    std::string toString() const override;
 private:
 	bool flag;// checks if this is the first time he order something
 };
@@ -66,13 +58,10 @@ private:
 
 class AlchoholicCustomer : public Customer {
 public:
-	Customer* getCustomerInstance();	//returns a pointer to a copy of the actual customer
-
-	std::string findType();
-
+	Customer* getCustomerInstance() override;	//returns a pointer to a copy of the actual customer
 	AlchoholicCustomer(std::string name, int id);
-    std::vector<int> order(const std::vector<Dish> &menu);
-    std::string toString() const;
+    std::vector<int> order(const std::vector<Dish> &menu) override;
+    std::string toString() const override;
 private:
 	int numOfOrders;// count the number of times he ordered
 	std::vector<Dish> sortAlcDish(const std::vector<Dish> &menu);// sort the alc dishes from the menu

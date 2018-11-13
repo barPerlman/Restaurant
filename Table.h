@@ -13,7 +13,7 @@ public:
     virtual ~Table(); //destructor
     Table& operator=(const Table &other);   //copy assignment
 
-    Table(int t_capacity);
+    explicit Table(int t_capacity);
     int getCapacity() const;
     void addCustomer(Customer* customer);
     void removeCustomer(int id);
