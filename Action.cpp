@@ -9,7 +9,7 @@
 using namespace std;
 extern Restaurant* backup;
 /**
-/**
+**
 * A Close action is the class that closes a table.
  */
 
@@ -36,7 +36,7 @@ void Close::act(Restaurant &restaurant) {
 
 
 std::string Close::toString() const {
-    string closeStr=""; //holds the message to print
+    string closeStr; //holds the message to print
     if(getStatus()==COMPLETED) {    //command completed successfully
         closeStr="close"+to_string(tableId)+" Completed";
 
@@ -98,9 +98,8 @@ PrintMenu::PrintMenu():BaseAction(){}
 
 // close a table in the restaurant with tableId
 void PrintMenu::act(Restaurant &restaurant) {
-    for (Dish dish:restaurant.getMenu())
+    for (const Dish &dish:restaurant.getMenu())
         std::cout<<dish.toString()<<std::endl;
-
 }
 
 std::string PrintMenu::toString() const {
@@ -146,8 +145,8 @@ void PrintTableStatus::act(Restaurant &restaurant) {
 
 // returns the price of the dish
 int PrintTableStatus::nameToPrice(std::string name, Restaurant &restaurant) {
-    for(Dish dish : restaurant.getMenu())
-        if(dish.getName().compare(name)==0)
+    for(Dish &dish : restaurant.getMenu())
+        if(dish.getName()==name)
             return dish.getPrice();
 }
 

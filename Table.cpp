@@ -36,9 +36,9 @@ void Table::addCustomer(Customer *customer) {
 //remove customer with 'id' from customers list
 //remove orders of customer with 'id' from orders list
 void Table::removeCustomer(int id) {
-    int i = 0;
+    unsigned long i = 0;
     bool found = false;   //a flag tells if the customer removed
-    while (i < customersList.size() && !found) {
+    while (i < static_cast<int>(customersList.size()) && !found) {
         Customer *&currCustomer = customersList.at(i);
         if (currCustomer->getId() == id) {   //found such customer
             customersList.erase(customersList.begin() + i);
@@ -92,12 +92,14 @@ void Table::order(const std::vector<Dish> &menu) {
         vector<int> customerOrders = c->order(menu);
         //push customer orders into current orders from table vector
         for (int dishId:customerOrders) {
-            currOrdersById.push_back(OrderPair(c->getId(), (menu.at(dishId))));
-            currOrdersByName.push_back(CurrOrderPair(c->getName(), menu.at(dishId)));
+            OrderPair op(c->getId(), (menu.at(static_cast<unsigned long>(dishId))));
+            currOrdersById.push_back(op);
+            CurrOrderPair cop(c->getName(), menu.at(static_cast<unsigned long>(dishId)));
+            currOrdersByName.push_back(cop);
         }
     }
     //update the orders list with the last made orders
-    for (OrderPair lastOrder:currOrdersById) {
+    for (const OrderPair &lastOrder:currOrdersById) {
         orderList.push_back(lastOrder);
     }
     //print the last orders made in the table
@@ -144,7 +146,7 @@ Table::~Table() {
 //clear sources out of the customers vector
 void Table::clear() {
 
-   if(customersList.size()>0) {
+   if(!customersList.empty()) {
 
        for (Customer *customer:customersList) {
            delete customer;
@@ -152,7 +154,7 @@ void Table::clear() {
        }
        customersList.clear();
    }
-   if(orderList.size()>0){
+   if(!orderList.empty()){
        orderList.clear();
    }
 }
@@ -165,7 +167,7 @@ Table::Table(const Table &other):open(other.open),capacity(other.capacity) {
         customersList.push_back(c->getCustomerInstance()); //get copied instances of customers
     }
     //copy the orders list
-    for(OrderPair op:other.orderList){
+    for(const OrderPair &op:other.orderList){
         orderList.push_back(op);
     }
 
@@ -187,7 +189,7 @@ Table& Table::operator=(const Table &other)
             customersList.push_back(c->getCustomerInstance()); //get copied instances of customers
         }
         //copy the orders list
-        for(OrderPair op:other.orderList){
+        for(const OrderPair &op:other.orderList){
             orderList.push_back(op);
         }
 
