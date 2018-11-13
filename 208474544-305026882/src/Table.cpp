@@ -13,9 +13,10 @@
 
 using namespace std;
 
+
 /////////////////////////Table Class functions/////////////////////////////////////
 //constructor
-Table::Table(int t_capacity) : capacity(t_capacity), open(false) {}
+Table::Table(int t_capacity) : capacity(t_capacity), open(false),customersList(),orderList() {}
 
 //getter of table capacity
 int Table::getCapacity() const {
@@ -25,7 +26,8 @@ int Table::getCapacity() const {
 //add a customer to the table as last element in vector
 void Table::addCustomer(Customer *customer) {
     //it's possible to add a customer to the table
-    if (customersList.size() < capacity) {
+    int custListSize=(int)customersList.size();
+    if (custListSize < capacity) {
         customersList.push_back(customer);//add customer to table at end of list
     } else {
         std::cout << "Cannot add a Customer to the table. it's open or full!" << std::endl;
@@ -36,17 +38,17 @@ void Table::addCustomer(Customer *customer) {
 //remove customer with 'id' from customers list
 //remove orders of customer with 'id' from orders list
 void Table::removeCustomer(int id) {
-    unsigned long i = 0;
+    int i = 0;
     bool found = false;   //a flag tells if the customer removed
-    while (i < static_cast<int>(customersList.size()) && !found) {
+    int custListSize=customersList.size();
+    while (i < custListSize && !found) {
         Customer *&currCustomer = customersList.at(i);
         if (currCustomer->getId() == id) {   //found such customer
             customersList.erase(customersList.begin() + i);
             found = true;
         }
         i++;
-    }
-    //if a customer is removed, remove his orders out of the table
+    }    //if a customer is removed, remove his orders out of the table
     if (found) {
         vector<OrderPair> orderListCopy(orderList);  //deep copy orders to temp list orders
         orderList.clear();
@@ -161,7 +163,8 @@ void Table::clear() {
 }
 
 //copy constructor
-Table::Table(const Table &other):open(other.open),capacity(other.capacity) {
+Table::Table(const Table &other):capacity(other.capacity),open(other.open),customersList(),orderList() {
+
     //deep copy
     //copy the customers
     for(Customer* c:other.customersList){

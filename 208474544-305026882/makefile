@@ -36,6 +36,10 @@ bin/Table.o: src/Table.cpp
 bin/main.o: src/main.cpp
 	$(CC) $(CFLAGS) -c -Linclude -o bin/main.o src/main.cpp
 
+# Depends on the source and header files
+bin/Restaurant.o: src/Restaurant.cpp
+	$(CC) $(CFLAGS) -c -Linclude -o bin/Restaurant.o src/Restaurant.cpp
+
 #Clean the build directory
 clean: 
 	rm -f bin/*

@@ -17,10 +17,12 @@ using namespace std;
 /////////////////////////Restaurant Class functions/////////////////////////////////////
 /////////////////////////Restaurant Class functions/////////////////////////////////////
 //default empty constructor
-Restaurant::Restaurant() : lastId(0), open(false) {}
+Restaurant::Restaurant() : lastId(0), open(false),tables(),menu(),actionsLog() {}
+
 
 //constructor
-Restaurant::Restaurant(const std::string &configFilePath) : lastId(0), open(false) {
+Restaurant::Restaurant(const std::string &configFilePath) : lastId(0), open(false),tables(),menu(),actionsLog() {
+
     std::ifstream file(configFilePath);//open file to read
     string readLine; //holds the current read line from the file
     do {
@@ -52,8 +54,9 @@ void Restaurant::readConfigFile(ifstream &file, string &readLine) {
     readMenu(file, readLine, delimiter, pos, token);    //call to function which read the menu from file
 
     //initialization of tables in the restaurant
-    for (unsigned long i = 0; i < tablesAnount; i++) {
-        tables.push_back(new Table(tablesDescription.at(i)));
+    for (int i = 0; i < tablesAnount; i++) {
+        unsigned int index=i;
+        tables.push_back(new Table(tablesDescription.at(index)));
     }
 }
 
@@ -218,7 +221,7 @@ void Restaurant::clear() {
 }
 
 //copy constructor
-Restaurant::Restaurant(const Restaurant &other) : lastId(other.lastId), open(other.open), menu(other.menu) {
+Restaurant::Restaurant(const Restaurant &other) : lastId(other.lastId), open(other.open),tables(),menu(other.menu),actionsLog() {
 
 
     for (BaseAction *ba:other.actionsLog) {
@@ -239,7 +242,7 @@ Restaurant::Restaurant(const Restaurant &other) : lastId(other.lastId), open(oth
 
 
 //move constructor
-Restaurant::Restaurant(Restaurant &&other){
+Restaurant::Restaurant(Restaurant &&other):lastId(other.lastId),open(other.open),tables(),menu(),actionsLog(){
 //use the default move
     menu=std::move(other.menu);
     actionsLog=std::move(other.actionsLog);
