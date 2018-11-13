@@ -27,7 +27,6 @@ void Close::act(Restaurant &restaurant) {
         std::cout << "Table " << std::to_string(tableId) << " was closed. Bill " << std::to_string(restaurant.getTable(tableId)->getBill()) << "NIS"<<std::endl;
         //close table
         restaurant.getTable(tableId)->closeTable();// update the boolean status of the table
-	complete();
     }
         //  if the restaurant is not exist or is not open
     else{
@@ -39,7 +38,7 @@ void Close::act(Restaurant &restaurant) {
 std::string Close::toString() const {
     string closeStr; //holds the message to print
     if(getStatus()==COMPLETED) {    //command completed successfully
-        closeStr="closed"+to_string(tableId)+" Completed";
+        closeStr="close"+to_string(tableId)+" Completed";
 
     }
     else{       //didn't complete successfully
@@ -73,7 +72,6 @@ void CloseAll::act(Restaurant &restaurant) {
             close.act(restaurant);
         }
     }
-complete();
 }
 
 
@@ -100,10 +98,8 @@ PrintMenu::PrintMenu():BaseAction(){}
 
 // close a table in the restaurant with tableId
 void PrintMenu::act(Restaurant &restaurant) {
-    for (const Dish &dish:restaurant.getMenu()){
-	std::cout<<dish.toString()<<std::endl;
-	}
-complete();
+    for (const Dish &dish:restaurant.getMenu())
+        std::cout<<dish.toString()<<std::endl;
 }
 
 std::string PrintMenu::toString() const {
@@ -130,7 +126,7 @@ PrintTableStatus::PrintTableStatus(int ind):BaseAction(),tableId(ind){}
 // close a table in the restaurant with tableId
 void PrintTableStatus::act(Restaurant &restaurant) {
     if(!(restaurant.getTable(tableId)->isOpen()))// if the table is close
-        std::cout<<"Table "<< std::to_string(tableId)<< " status: close"<<std::endl;// prints the status of the table
+        std::cout<<"Table "<< std::to_string(tableId)<< " status: closed"<<std::endl;// prints the status of the table
 
     else{// if the table is open
         std::cout<<"Table "<< std::to_string(tableId)<< " status: open"<<std::endl;// prints the status of the table
@@ -145,7 +141,6 @@ void PrintTableStatus::act(Restaurant &restaurant) {
                 to_string(orderPair.first)<<std::endl;
         std::cout<<"Current Bill: "<< std::to_string(restaurant.getTable(tableId)->getBill())<<"NIS"<<std::endl;
     }
-complete();
 }
 
 // returns the price of the dish
@@ -187,7 +182,7 @@ void BackupRestaurant::act(Restaurant &restaurant) {
 }
 
 std::string BackupRestaurant::toString() const {
-    return "Backup Completed";
+    return "backup Completed";
 }
 
 BaseAction* BackupRestaurant::getActionInstance() {    //return a pointer for a action instance copy

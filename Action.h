@@ -17,7 +17,7 @@ public:
     virtual BaseAction* getActionInstance()=0;    //return pointer to new instance of the actual action class
     BaseAction();									//empty constructor
     BaseAction(const BaseAction &other);        //copy constructor
-    virtual ~BaseAction(); // Destructor
+   // virtual ~BaseAction(); // Destructor
 
     ActionStatus getStatus() const;
     virtual void act(Restaurant& restaurant)=0;
@@ -36,7 +36,7 @@ class OpenTable : public BaseAction {
 public:
     BaseAction* getActionInstance() override;   //this return a pointer to actual instance of action
     //destructor
-    ~OpenTable() override; //destructor
+    ~OpenTable() ; //destructor
     OpenTable(const OpenTable &other);    //copy constructor
     OpenTable(OpenTable &&other);         //move constructor
     OpenTable();                            //empty constructor

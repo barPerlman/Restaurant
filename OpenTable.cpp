@@ -40,7 +40,7 @@ OpenTable::OpenTable(const OpenTable &other):BaseAction(other),tableId(other.tab
 
 void OpenTable::clear(){
     for(Customer *customer:customers){
-        delete (customer);
+        delete customer;
         customer= nullptr;
     }
 }
@@ -66,16 +66,16 @@ void OpenTable::act(Restaurant &restaurant){
 //print a feedback to the open table command
 std::string OpenTable::toString() const{
     string openStr="open " + to_string(tableId); //holds the message to print
-    if(getStatus()==COMPLETED) {    //command completed successfully
         for (Customer *c:customers) {
 
-            openStr+=openStr+" " + c->toString();
+            openStr+= " " + c->toString();
 
         }
-        openStr+=" Completed";
-    }
-    else{       //didn't complete successfully
+
+    if(getStatus()!=COMPLETED){       //didn't complete successfully
         openStr+=" "+getErrorMsg();
+    } else{
+        openStr+=" Completed";
     }
     return openStr;
 }

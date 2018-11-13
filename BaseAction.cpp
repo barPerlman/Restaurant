@@ -15,7 +15,7 @@ using namespace std;
 BaseAction::BaseAction():status(PENDING) {}
 
 //destructor
-BaseAction::~BaseAction(){};
+//BaseAction::~BaseAction(){};
 
 
 //getter
